@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="springExpression" />
+        <module name="springContext" />
+        <module name="springWebsocket" />
+        <module name="springBeans" />
+        <module name="springWebmvc" />
+        <module name="springCore" />
+        <module name="springJms" />
+        <module name="spring-mvc-demo" />
+        <module name="springWebflux" />
+        <module name="springOxm" />
+        <module name="springOrm" />
+        <module name="springInstrument" />
+        <module name="springAop" />
+        <module name="springJdbc" />
+        <module name="springTx" />
+        <module name="springContextSupport" />
+        <module name="spring-ioc-demo" />
+        <module name="springMessaging" />
+        <module name="springWeb" />
+        <module name="springJcl" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel target="8">
+      <module name="spring-ioc-demo" target="1.8" />
+      <module name="spring-mvc-demo" target="1.8" />
+      <module name="springAop" target="8" />
+      <module name="springBeans" target="8" />
+      <module name="springContext" target="8" />
+      <module name="springContextSupport" target="8" />
+      <module name="springCore" target="8" />
+      <module name="springExpression" target="8" />
+      <module name="springInstrument" target="1.8" />
+      <module name="springJcl" target="8" />
+      <module name="springJdbc" target="8" />
+      <module name="springJms" target="8" />
+      <module name="springMessaging" target="8" />
+      <module name="springOrm" target="1.8" />
+      <module name="springOxm" target="8" />
+      <module name="springSource" target="1.8" />
+      <module name="springTx" target="8" />
+      <module name="springWeb" target="8" />
+      <module name="springWebflux" target="8" />
+      <module name="springWebmvc" target="8" />
+      <module name="springWebsocket" target="8" />
+    </bytecodeTargetLevel>
+  </component>
+</project>

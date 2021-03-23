@@ -1,0 +1,18 @@
+# Project exclude paths
+/spring-ioc-demo/target/
+/spring-mvc-demo/target/
+/springAop/target/
+/springBeans/target/
+/springContext/target/
+/springContextSupport/target/
+/springCore/target/
+/springExpression/target/
+/springInstrument/target/
+/springJcl/target/
+/springJdbc/target/
+/springJms/target/
+/springOxm/target/
+/springTx/target/
+/springWebflux/target/
+/springWebmvc/target/
+/springWebsocket/target/

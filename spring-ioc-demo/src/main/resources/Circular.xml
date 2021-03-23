@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <bean name="c1" class="com.pcy.circular.Class1" init-method="init">
+        <property name="c2" ref="c2" />
+    </bean>
+    <bean name="c2" class="com.pcy.circular.Class2" init-method="init">
+        <property name="c1" ref="c1"/>
+    </bean>
+
+</beans>
