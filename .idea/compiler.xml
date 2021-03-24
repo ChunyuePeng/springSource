@@ -6,6 +6,7 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="spring-demo" />
         <module name="springExpression" />
         <module name="springContext" />
         <module name="springWebsocket" />
@@ -20,16 +21,21 @@
         <module name="springInstrument" />
         <module name="springAop" />
         <module name="springJdbc" />
+        <module name="spring-jdbc-demo" />
         <module name="springTx" />
         <module name="springContextSupport" />
         <module name="spring-ioc-demo" />
         <module name="springMessaging" />
         <module name="springWeb" />
+        <module name="spring-aop-demo" />
         <module name="springJcl" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel target="8">
+      <module name="spring-aop-demo" target="1.8" />
+      <module name="spring-demo" target="1.8" />
       <module name="spring-ioc-demo" target="1.8" />
+      <module name="spring-jdbc-demo" target="1.8" />
       <module name="spring-mvc-demo" target="1.8" />
       <module name="springAop" target="8" />
       <module name="springBeans" target="8" />

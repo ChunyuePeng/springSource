@@ -70,7 +70,7 @@ public class BeanFactoryAdvisorRetrievalHelper {
 		if (advisorNames == null) {
 			// Do not initialize FactoryBeans here: We need to leave all regular beans
 			// uninitialized to let the auto-proxy creator apply to them!
-			/*xxx:这个方法用来获取框架中的所有的 切面，是AOP核心*/
+			/*xxx:这个方法用来获取框架中的所有的Advisor.class的bean name，是AOP核心*/
 			/*xxx: 它的获取是通过BeanFactoryUtils进行获取的*/
 			advisorNames = BeanFactoryUtils.beanNamesForTypeIncludingAncestors(
 					this.beanFactory, Advisor.class, true, false);

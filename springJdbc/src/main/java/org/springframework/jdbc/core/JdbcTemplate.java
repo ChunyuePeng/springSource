@@ -647,6 +647,7 @@ public class JdbcTemplate extends JdbcAccessor implements JdbcOperations {
 		PreparedStatement ps = null;
 		try {
 			ps = psc.createPreparedStatement(con);
+			//应用用户设定的输入参数
 			applyStatementSettings(ps);
 			T result = action.doInPreparedStatement(ps);
 			handleWarnings(ps);
@@ -1461,6 +1462,8 @@ public class JdbcTemplate extends JdbcAccessor implements JdbcOperations {
 	protected void applyStatementSettings(Statement stmt) throws SQLException {
 		int fetchSize = getFetchSize();
 		if (fetchSize != -1) {
+			//减少网络交互次数，当调用rs.next时，ResultSet会
+			//一次性从服务器上取多少行数据回来
 			stmt.setFetchSize(fetchSize);
 		}
 		int maxRows = getMaxRows();
