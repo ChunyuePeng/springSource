@@ -50,17 +50,35 @@ import org.springframework.util.Assert;
  */
 public class DefaultTransactionStatus extends AbstractTransactionStatus {
 
+	/**
+	 * 表示事务对象，实际是DataSourceTransactionObject，拥有connectionHolder、
+	 * previousIsolationLevel等属性，事务实现的本质是多个数据库的操作通过连接：
+	 * Connection。ConnectionHolder包装了Connection对象，TransactionManager通过
+	 * 一个ThreadLocal属性以datasource为key，ConnectionHolder为value的方式持有
+	 * ConnectionHolder。
+	 */
 	@Nullable
 	private final Object transaction;
 
+	/**
+	 * 事务有传播特性，如果是嵌套事务，那么第一个事务就是新的（newTransaction=true），
+	 * 嵌套内的事务就是旧的
+	 */
 	private final boolean newTransaction;
 
+	/**
+	 * 用于在事务commit/complete前后进行回调操作的表示
+	 */
 	private final boolean newSynchronization;
 
 	private final boolean readOnly;
 
 	private final boolean debug;
 
+	/**
+	 * 用于当有两个以上事务场景的时候，保存上一个事务信息，
+	 * 从而当当前事务完成后可以回到上衣个事务
+	 */
 	@Nullable
 	private final Object suspendedResources;
 

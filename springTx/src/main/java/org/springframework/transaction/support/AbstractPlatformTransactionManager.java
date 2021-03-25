@@ -344,11 +344,15 @@ public abstract class AbstractPlatformTransactionManager implements PlatformTran
 		// Use defaults if no transaction definition given.
 		TransactionDefinition def = (definition != null ? definition : TransactionDefinition.withDefaults());
 
+		//Spring默认使用spring jdbc的事务，所以这里会创建DataSourceTransactionObject，并从事务管理器中取出
+		//ConnectionHolder赋值给DataSourceTransactionObject对象的属性
 		Object transaction = doGetTransaction();
 		boolean debugEnabled = logger.isDebugEnabled();
 
+		//判断是否已存在事务：根据DataSourceTransactionObject.connectionHolder是否为空判断
 		if (isExistingTransaction(transaction)) {
 			// Existing transaction found -> check propagation behavior to find out how to behave.
+			//存在事务，使用同上一个事务去处理操作
 			return handleExistingTransaction(def, transaction, debugEnabled);
 		}
 
@@ -358,6 +362,7 @@ public abstract class AbstractPlatformTransactionManager implements PlatformTran
 		}
 
 		// No existing transaction found -> check propagation behavior to find out how to proceed.
+		//不存在事务，检查传播行为以确定如何继续
 		if (def.getPropagationBehavior() == TransactionDefinition.PROPAGATION_MANDATORY) {
 			throw new IllegalTransactionStateException(
 					"No existing transaction found for transaction marked with propagation 'mandatory'");
@@ -365,11 +370,13 @@ public abstract class AbstractPlatformTransactionManager implements PlatformTran
 		else if (def.getPropagationBehavior() == TransactionDefinition.PROPAGATION_REQUIRED ||
 				def.getPropagationBehavior() == TransactionDefinition.PROPAGATION_REQUIRES_NEW ||
 				def.getPropagationBehavior() == TransactionDefinition.PROPAGATION_NESTED) {
+			//此方法为暂停事务，由于没有已存在的事务，所以这里传的是null，表示无需暂停事务
 			SuspendedResourcesHolder suspendedResources = suspend(null);
 			if (debugEnabled) {
 				logger.debug("Creating new transaction with name [" + def.getName() + "]: " + def);
 			}
 			try {
+				//创建事务
 				return startTransaction(def, transaction, debugEnabled, suspendedResources);
 			}
 			catch (RuntimeException | Error ex) {
@@ -735,6 +742,7 @@ public abstract class AbstractPlatformTransactionManager implements PlatformTran
 					unexpectedRollback = status.isGlobalRollbackOnly();
 					status.releaseHeldSavepoint();
 				}
+				//事务都执行完才做事务提交操作
 				else if (status.isNewTransaction()) {
 					if (status.isDebug()) {
 						logger.debug("Initiating transaction commit");

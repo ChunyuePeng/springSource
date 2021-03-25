@@ -358,6 +358,7 @@ public abstract class TransactionAspectSupport implements BeanFactoryAware, Init
 
 		if (txAttr == null || !(ptm instanceof CallbackPreferringPlatformTransactionManager)) {
 			// Standard transaction demarcation with getTransaction and commit/rollback calls.
+			//获取事务信息，包含这些属性：事务管理器：ransactionManager;事务属性：transactionAttribute; 事务状态：transactionStatus;老事务：oldTransactionInfo;
 			TransactionInfo txInfo = createTransactionIfNecessary(ptm, txAttr, joinpointIdentification);
 
 			Object retVal;
@@ -571,6 +572,7 @@ public abstract class TransactionAspectSupport implements BeanFactoryAware, Init
 		TransactionStatus status = null;
 		if (txAttr != null) {
 			if (tm != null) {
+				//创建事务信息对象
 				status = tm.getTransaction(txAttr);
 			}
 			else {
@@ -580,6 +582,7 @@ public abstract class TransactionAspectSupport implements BeanFactoryAware, Init
 				}
 			}
 		}
+		//准备事务信息对象，并把事务信息对象绑定到当前线程上
 		return prepareTransactionInfo(tm, txAttr, joinpointIdentification, status);
 	}
 

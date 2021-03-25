@@ -136,6 +136,8 @@ public class RuleBasedTransactionAttribute extends DefaultTransactionAttribute i
 		RollbackRuleAttribute winner = null;
 		int deepest = Integer.MAX_VALUE;
 
+		//只有业务方法中配置的@Transactional.rollbackfor的值，rollbackRules才至于这个值，
+		//否则rollbackRules为空
 		if (this.rollbackRules != null) {
 			for (RollbackRuleAttribute rule : this.rollbackRules) {
 				int depth = rule.getDepth(ex);
@@ -151,6 +153,7 @@ public class RuleBasedTransactionAttribute extends DefaultTransactionAttribute i
 		}
 
 		// User superclass behavior (rollback on unchecked) if no rule matches.
+		//当没有配置业务方法中的@Transactionnal.rollbackfor的值时，走下面的逻辑。
 		if (winner == null) {
 			logger.trace("No relevant rollback rule found: applying default rules");
 			return super.rollbackOn(ex);

@@ -449,7 +449,9 @@ public abstract class AbstractAutoProxyCreator extends ProxyProcessorSupport
 		ProxyFactory proxyFactory = new ProxyFactory();
 		//获取当前类中相关属性
 		proxyFactory.copyFrom(this);
-
+		//如果proxyFactory.proxyTargetClass为false，但是目标beanClass是类
+		//而不是接口，那么需要设置proxyFactory.proxyTargetClass为true，表示
+		//使用cglib生成代理
 		if (!proxyFactory.isProxyTargetClass()) {
 			if (shouldProxyTargetClass(beanClass, beanName)) {
 				proxyFactory.setProxyTargetClass(true);
@@ -460,6 +462,7 @@ public abstract class AbstractAutoProxyCreator extends ProxyProcessorSupport
 			}
 		}
 
+		//获取增强器
 		Advisor[] advisors = buildAdvisors(beanName, specificInterceptors);
 		//加入增强器
 		proxyFactory.addAdvisors(advisors);

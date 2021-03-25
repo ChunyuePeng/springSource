@@ -32,6 +32,7 @@ package org.springframework.aop;
 public interface IntroductionAdvisor extends Advisor, IntroductionInfo {
 
 	/**
+	 *返回一个筛选器，决定此引用应该应用到哪一个目标类
 	 * Return the filter determining which target classes this introduction
 	 * should apply to.
 	 * <p>This represents the class part of a pointcut. Note that method
