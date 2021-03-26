@@ -19,7 +19,13 @@ package org.aopalliance.aop;
 /**
  * Tag interface for Advice. Implementations can be any type
  * of advice, such as Interceptors.
- *Advice是aopalliance对通知（增强器）的顶层抽象
+ *Advice是aopalliance对通知（增强器）的顶层抽象，是对附加方法（被代理方法）前后需要执行的描述。
+ * Spring支持物种类型的增强或通知（Advice）:
+ * Before（方法执行前）
+ * AfterReturning（方法返回前）
+ * AfterThrowing（异常抛出后）
+ * Around（环绕）
+ * Introduction（引介）
  * @author Rod Johnson
  * @version $Id: Advice.java,v 1.1 2004/03/19 17:02:16 johnsonr Exp $
  */
