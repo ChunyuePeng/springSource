@@ -68,6 +68,7 @@
         <module>spring-aop-demo</module>
         <module>spring-demo</module>
         <module>spring-jdbc-demo</module>
+        <module>0xml-mvc</module>
     </modules>
 
     <repositories>

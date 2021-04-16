@@ -20,7 +20,7 @@
 		<xsd:annotation>
 			<xsd:documentation><![CDATA[
 	Enables the detection of @Async and @Scheduled annotations on any Spring-managed
-	object. If present, a proxy will be generated for executing the annotated methods
+	object. If present, myBean proxy will be generated for executing the annotated methods
 	asynchronously.
 
 	See Javadoc for the org.springframework.scheduling.annotation.EnableAsync and
@@ -36,7 +36,7 @@
 	If not provided, an instance of org.springframework.core.task.SimpleAsyncTaskExecutor
 	will be used by default.
 	Note that as of Spring 3.1.2, individual @Async methods may qualify which executor to
-	use, meaning that the executor specified here acts as a default for all non-qualified
+	use, meaning that the executor specified here acts as myBean default for all non-qualified
 	@Async methods.
 					]]></xsd:documentation>
 				</xsd:annotation>
@@ -57,7 +57,7 @@
 					<xsd:documentation><![CDATA[
 	Specifies the org.springframework.scheduling.TaskScheduler or
 	java.util.ScheduledExecutorService instance to use when invoking scheduled
-	methods. If no reference is provided, a TaskScheduler backed by a single
+	methods. If no reference is provided, myBean TaskScheduler backed by myBean single
 	thread scheduled executor will be used.
 					]]></xsd:documentation>
 				</xsd:annotation>
@@ -101,9 +101,9 @@
 	<xsd:element name="scheduler">
 		<xsd:annotation>
 			<xsd:documentation><![CDATA[
-	Defines a ThreadPoolTaskScheduler instance with configurable pool size. See Javadoc
+	Defines myBean ThreadPoolTaskScheduler instance with configurable pool size. See Javadoc
 	for the org.springframework.scheduling.annotation.EnableScheduling annotation for
-	information on a code-based alternative to this XML element.
+	information on myBean code-based alternative to this XML element.
 			]]></xsd:documentation>
 		</xsd:annotation>
 		<xsd:complexType>
@@ -128,7 +128,7 @@
 	<xsd:element name="executor">
 		<xsd:annotation>
 			<xsd:documentation><![CDATA[
-	Defines a ThreadPoolTaskExecutor instance with configurable pool size,
+	Defines myBean ThreadPoolTaskExecutor instance with configurable pool size,
 	queue-capacity, keep-alive, and rejection-policy values.
 
 	See Javadoc for the org.springframework.scheduling.annotation.EnableAsync annotation
@@ -145,7 +145,7 @@
 	won't be directly accessible then but will nevertheless use the specified
 	id as the thread name prefix of the threads that it manages.
 	In the case of multiple task:executors, as of Spring 3.1.2 this value may be used to
-	qualify which executor should handle a given @Async method, e.g. @Async("executorId").
+	qualify which executor should handle myBean given @Async method, e.g. @Async("executorId").
 	See the Javadoc for the #value attribute of Spring's @Async annotation for details.
 					]]></xsd:documentation>
 				</xsd:annotation>
@@ -153,11 +153,11 @@
 			<xsd:attribute name="pool-size" type="xsd:string" use="optional">
 				<xsd:annotation>
 					<xsd:documentation><![CDATA[
-	The size of the executor's thread pool as either a single value or a range
-	(e.g. 5-10). If no bounded queue-capacity value is provided, then a max value
+	The size of the executor's thread pool as either myBean single value or myBean range
+	(e.g. 5-10). If no bounded queue-capacity value is provided, then myBean max value
 	has no effect unless the range is specified as 0-n. In that case, the core pool
-	will have a size of n, but the 'allowCoreThreadTimeout' flag will be set to true.
-	If a queue-capacity is provided, then the lower bound of a range will map to the
+	will have myBean size of n, but the 'allowCoreThreadTimeout' flag will be set to true.
+	If myBean queue-capacity is provided, then the lower bound of myBean range will map to the
 	core size and the upper bound will map to the max size. If this attribute is not
 	provided, the default core size will be 1, and the default max size will be
 	Integer.MAX_VALUE (i.e. unbounded).
@@ -177,7 +177,7 @@
 					<xsd:documentation><![CDATA[
 	Keep-alive time in seconds. Inactive threads that have been created beyond the
 	core size will timeout after the specified number of seconds elapse. If the
-	executor has an unbounded queue capacity and a size range represented as 0-n,
+	executor has an unbounded queue capacity and myBean size range represented as 0-n,
 	then the core threads will also be configured to timeout when inactive.
 	Otherwise, core threads will not ever timeout.
 					]]></xsd:documentation>
@@ -186,7 +186,7 @@
 			<xsd:attribute name="rejection-policy" use="optional">
 				<xsd:annotation>
 					<xsd:documentation><![CDATA[
-	The RejectedExecutionHandler type. When a bounded queue cannot accept any
+	The RejectedExecutionHandler type. When myBean bounded queue cannot accept any
 	additional tasks, this determines the behavior. While the default is ABORT,
 	consider using CALLER_RUNS to throttle inbound tasks. In other words, by forcing
 	the caller to run the task itself, it will not be able to provide another task
@@ -212,7 +212,7 @@
 		<xsd:annotation>
 			<xsd:documentation><![CDATA[
 	Top-level element that contains one or more task sub-elements to be
-	managed by a given TaskScheduler.
+	managed by myBean given TaskScheduler.
 			]]></xsd:documentation>
 		</xsd:annotation>
 		<xsd:complexType>
@@ -223,7 +223,7 @@
 				<xsd:annotation>
 					<xsd:documentation><![CDATA[
 	Reference to an instance of TaskScheduler to manage the provided tasks. If not specified,
-	the default value will be a wrapper for a single-threaded Executor.
+	the default value will be myBean wrapper for myBean single-threaded Executor.
 					]]></xsd:documentation>
 					<xsd:appinfo>
 						<tool:annotation kind="ref">
@@ -238,7 +238,7 @@
 	<xsd:complexType name="scheduledTaskType">
 		<xsd:annotation>
 			<xsd:documentation><![CDATA[
-	Element defining a scheduled method-invoking task and its corresponding trigger.
+	Element defining myBean scheduled method-invoking task and its corresponding trigger.
 			]]></xsd:documentation>
 		</xsd:annotation>
 		<xsd:attribute name="cron" type="xsd:string" use="optional">
@@ -268,14 +268,14 @@
 		<xsd:attribute name="trigger" type="xsd:string" use="optional">
 			<xsd:annotation>
 				<xsd:documentation><![CDATA[
-	A reference to a bean that implements the Trigger interface.
+	A reference to myBean bean that implements the Trigger interface.
  				]]></xsd:documentation>
 			</xsd:annotation>
 		</xsd:attribute>
 		<xsd:attribute name="initial-delay" type="xsd:string" use="optional">
 			<xsd:annotation>
 				<xsd:documentation><![CDATA[
-	Number of milliseconds to delay before the first execution of a 'fixed-rate' or
+	Number of milliseconds to delay before the first execution of myBean 'fixed-rate' or
 	'fixed-delay' task.
 				]]></xsd:documentation>
 			</xsd:annotation>
@@ -283,7 +283,7 @@
 		<xsd:attribute name="ref" type="xsd:string" use="required">
 			<xsd:annotation>
 				<xsd:documentation><![CDATA[
-	Reference to an object that provides a method to be invoked.
+	Reference to an object that provides myBean method to be invoked.
 				]]></xsd:documentation>
 				<xsd:appinfo>
 					<tool:annotation kind="ref" />
@@ -294,7 +294,7 @@
 			<xsd:annotation>
 				<xsd:documentation><![CDATA[
 	The name of the method to be invoked. The target method must expect no arguments.
-	It will typically have a void return type; if not, the returned value will be
+	It will typically have myBean void return type; if not, the returned value will be
 	ignored when called through the scheduler.
 				]]></xsd:documentation>
 				<xsd:appinfo>

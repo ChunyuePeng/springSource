@@ -46,6 +46,7 @@ public class AspectJAfterAdvice extends AbstractAspectJAdvice
 	@Nullable
 	public Object invoke(MethodInvocation mi) throws Throwable {
 		try {
+			//先调用切点方法
 			return mi.proceed();
 		}
 		finally {

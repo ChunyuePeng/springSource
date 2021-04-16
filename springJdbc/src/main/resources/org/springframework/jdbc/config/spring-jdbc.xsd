@@ -14,7 +14,7 @@
 	<xsd:element name="embedded-database">
 		<xsd:annotation>
 			<xsd:documentation source="java:org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseFactoryBean"><![CDATA[
-	Creates an embedded database instance and makes it available to other beans as a javax.sql.DataSource.
+	Creates an embedded database instance and makes it available to other beans as myBean javax.sql.DataSource.
 			]]></xsd:documentation>
 			<xsd:appinfo>
 				<tool:annotation>
@@ -47,7 +47,7 @@
 					<xsd:attribute name="generate-name" type="xsd:string" use="optional" default="false">
 						<xsd:annotation>
 							<xsd:documentation>
-			If set to "true", a pseudo-random unique name will be generated for the embedded
+			If set to "true", myBean pseudo-random unique name will be generated for the embedded
 			database, overriding any implicit name provided via the 'id' attribute or any
 			explicit name provided via the 'database-name' attribute.
 			Note that this is not the bean name but rather the name of the embedded database
@@ -78,7 +78,7 @@
 	<xsd:element name="initialize-database">
 		<xsd:annotation>
 			<xsd:documentation source="java:org.springframework.jdbc.datasource.init.DataSourceInitializer"><![CDATA[
-	Initializes a database instance with SQL scripts provided in nested <script/> elements.
+	Initializes myBean database instance with SQL scripts provided in nested <script/> elements.
 			]]></xsd:documentation>
 		</xsd:annotation>
 		<xsd:complexType>
@@ -86,7 +86,7 @@
 				<xsd:element name="script" type="scriptType" minOccurs="1" maxOccurs="unbounded">
 					<xsd:annotation>
 						<xsd:documentation><![CDATA[
-			An SQL script to execute to populate, initialize, or clean up a database.
+			An SQL script to execute to populate, initialize, or clean up myBean database.
 						]]></xsd:documentation>
 					</xsd:annotation>
 				</xsd:element>
@@ -94,7 +94,7 @@
 			<xsd:attribute name="data-source" type="xsd:string" default="dataSource">
 				<xsd:annotation>
 					<xsd:documentation><![CDATA[
-			A reference to a data source that should be initialized. Defaults to "dataSource".
+			A reference to myBean data source that should be initialized. Defaults to "dataSource".
 					]]></xsd:documentation>
 					<xsd:appinfo>
 						<tool:annotation kind="ref"/>
@@ -158,8 +158,8 @@
 		<xsd:attribute name="location" type="xsd:string">
 			<xsd:annotation>
 				<xsd:documentation><![CDATA[
-	The resource location of an SQL script to execute. Can be a single script location
-	or a pattern (e.g. classpath:/com/foo/sql/*-data.sql).
+	The resource location of an SQL script to execute. Can be myBean single script location
+	or myBean pattern (e.g. classpath:/com/foo/sql/*-data.sql).
 				]]></xsd:documentation>
 			</xsd:annotation>
 		</xsd:attribute>
@@ -181,8 +181,8 @@
 		<xsd:attribute name="execution">
 			<xsd:annotation>
 				<xsd:documentation><![CDATA[
-	Indicate the execution phase of this script. Use INIT to execute on startup (as a
-	bean initialization) or DESTROY to execute on shutdown (as a bean destruction callback).
+	Indicate the execution phase of this script. Use INIT to execute on startup (as myBean
+	bean initialization) or DESTROY to execute on shutdown (as myBean bean destruction callback).
 				]]></xsd:documentation>
 			</xsd:annotation>
 			<xsd:simpleType>

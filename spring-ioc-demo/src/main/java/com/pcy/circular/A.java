@@ -5,21 +5,23 @@ package com.pcy.circular;
  * @author: 彭椿悦
  * @data: 2021/3/23 17:00
  */
-public class Class1 {
-    private Class2 c2;
+public class A {
+    private B b;
 
-    public Class1() {
+    public A() {
         System.out.println("Class1实例化了一个对象");
     }
 
     public void init(){
         System.out.println("Class1的对象执行了初始化方法");
     }
-    public Class2 getC2() {
-        return c2;
+
+    public B getB() {
+        return b;
     }
 
-    public void setC2(Class2 c2) {
-        this.c2 = c2;
+    public void setB(B b) {
+        System.out.println("设置了属性b");
+        this.b = b;
     }
 }

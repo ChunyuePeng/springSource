@@ -44,7 +44,7 @@
 	attribute.
 
 	Note that this attribute is still mandatory if you are using JSR-107 as an
-	additional exception cache resolver should be created and requires a CacheManager
+	additional exception cache resolver should be created and requires myBean CacheManager
 	to do so.
 					]]></xsd:documentation>
 					<xsd:appinfo>
@@ -136,7 +136,7 @@
 				<xsd:annotation>
 					<xsd:documentation source="java:org.springframework.core.Ordered"><![CDATA[
 	Controls the ordering of the execution of the cache advisor
-	when multiple advice executes at a specific joinpoint.
+	when multiple advice executes at myBean specific joinpoint.
 					]]></xsd:documentation>
 				</xsd:annotation>
 			</xsd:attribute>
@@ -237,7 +237,7 @@
 				<xsd:documentation><![CDATA[
 	The method name(s) with which the cache attributes are to be
 	associated. The wildcard (*) character can be used to associate the
-	same cache attribute settings with a number of methods; for
+	same cache attribute settings with myBean number of methods; for
 	example, 'get*', 'handle*', '*Order', 'on*Event', etc.]]></xsd:documentation>
 			</xsd:annotation>
 		</xsd:attribute>
@@ -262,7 +262,7 @@
 										<xsd:annotation>
 											<xsd:documentation><![CDATA[
 	Synchronize the invocation of the underlying method if several threads
-	are attempting to load a value for the same key]]></xsd:documentation>
+	are attempting to load myBean value for the same key]]></xsd:documentation>
 										</xsd:annotation>
 									</xsd:attribute>
 								</xsd:extension>

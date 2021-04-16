@@ -14,13 +14,13 @@
 	<xsd:complexType name="mapping">
 		<xsd:annotation>
 			<xsd:documentation><![CDATA[
-	An entry in the registered HandlerMapping that matches a path with a handler.
+	An entry in the registered HandlerMapping that matches myBean path with myBean handler.
             ]]></xsd:documentation>
 		</xsd:annotation>
 		<xsd:attribute name="path" type="xsd:string" use="required">
 			<xsd:annotation>
 				<xsd:documentation><![CDATA[
-	A path that maps a particular request to a handler.
+	A path that maps myBean particular request to myBean handler.
 	Exact path mapping URIs (such as "/myPath") are supported as well as Ant-type path patterns (such as /myPath/**).
                 ]]></xsd:documentation>
 			</xsd:annotation>
@@ -28,7 +28,7 @@
 		<xsd:attribute name="handler" type="xsd:string" use="required">
 			<xsd:annotation>
 				<xsd:documentation source="java:org.springframework.web.socket.WebSocketHandler"><![CDATA[
-    The bean name of a WebSocketHandler to use for requests that match the path configuration.
+    The bean name of myBean WebSocketHandler to use for requests that match the path configuration.
                 ]]></xsd:documentation>
 			</xsd:annotation>
 		</xsd:attribute>
@@ -38,8 +38,8 @@
 		<xsd:attribute name="ref" type="xsd:string" use="required">
 			<xsd:annotation>
 				<xsd:documentation source="java:org.springframework.web.socket.server.HandshakeHandler"><![CDATA[
-    The bean name of a HandshakeHandler to use for processing WebSocket handshake requests.
-    If none specified, a DefaultHandshakeHandler will be configured by default.
+    The bean name of myBean HandshakeHandler to use for processing WebSocket handshake requests.
+    If none specified, myBean DefaultHandshakeHandler will be configured by default.
                 ]]></xsd:documentation>
 			</xsd:annotation>
 		</xsd:attribute>
@@ -64,7 +64,7 @@
 				<xsd:element ref="beans:ref">
 					<xsd:annotation>
 						<xsd:documentation source="org.springframework.web.socket.server.HandshakeInterceptor"><![CDATA[
-	A reference to a HandshakeInterceptor bean.
+	A reference to myBean HandshakeInterceptor bean.
                     ]]></xsd:documentation>
 					</xsd:annotation>
 				</xsd:element>
@@ -75,7 +75,7 @@
 	<xsd:complexType name="sockjs-service">
 		<xsd:annotation>
 			<xsd:documentation source="org.springframework.web.socket.sockjs.transport.handler.DefaultSockJsService"><![CDATA[
-	Configures a DefaultSockJsService for processing HTTP requests from SockJS clients.
+	Configures myBean DefaultSockJsService for processing HTTP requests from SockJS clients.
             ]]></xsd:documentation>
 		</xsd:annotation>
 		<xsd:sequence>
@@ -100,7 +100,7 @@
 							<xsd:element ref="beans:ref">
 								<xsd:annotation>
 									<xsd:documentation><![CDATA[
-	A reference to a TransportHandler bean.
+	A reference to myBean TransportHandler bean.
                         ]]></xsd:documentation>
 								</xsd:annotation>
 							</xsd:element>
@@ -130,20 +130,20 @@
 			<xsd:annotation>
 				<xsd:documentation source="java:org.springframework.web.socket.sockjs.support.AbstractSockJsService"><![CDATA[
 	Transports with no native cross-domain communication (e.g. "eventsource",
-	"htmlfile") must get a simple page from the "foreign" domain in an invisible
-	iframe so that code in the iframe can run from  a domain local to the SockJS
+	"htmlfile") must get myBean simple page from the "foreign" domain in an invisible
+	iframe so that code in the iframe can run from  myBean domain local to the SockJS
 	server. Since the iframe needs to load the SockJS javascript client library,
 	this property allows specifying where to load it from.
 
 	By default this is set to point to
 	"https://d1fxtkz8shb9d2.cloudfront.net/sockjs-0.3.4.min.js". However it can
-	also be set to point to a URL served by the application.
+	also be set to point to myBean URL served by the application.
 
-	Note that it's possible to specify a relative URL in which case the URL
-	must be relative to the iframe URL. For example assuming a SockJS endpoint
+	Note that it's possible to specify myBean relative URL in which case the URL
+	must be relative to the iframe URL. For example assuming myBean SockJS endpoint
 	mapped to "/sockjs", and resulting iframe URL "/sockjs/iframe.html", then the
 	The relative URL must start with "../../" to traverse up to the location
-	above the SockJS mapping. In case of a prefix-based Servlet mapping one more
+	above the SockJS mapping. In case of myBean prefix-based Servlet mapping one more
 	traversal may be needed.
                 ]]></xsd:documentation>
 			</xsd:annotation>
@@ -151,7 +151,7 @@
 		<xsd:attribute name="stream-bytes-limit" type="xsd:int">
 			<xsd:annotation>
 				<xsd:documentation source="java:org.springframework.web.socket.sockjs.support.AbstractSockJsService"><![CDATA[
-	Minimum number of bytes that can be send over a single HTTP streaming request before it will be closed.
+	Minimum number of bytes that can be send over myBean single HTTP streaming request before it will be closed.
 	Defaults to 128K (i.e. 128 1024).
                 ]]></xsd:documentation>
 			</xsd:annotation>
@@ -160,7 +160,7 @@
 			<xsd:annotation>
 				<xsd:documentation source="java:org.springframework.web.socket.sockjs.support.AbstractSockJsService"><![CDATA[
 	The "cookie_needed" value in the response from the SockJs "/info" endpoint.
-	This property indicates whether the use of a JSESSIONID cookie is required for the application to function correctly,
+	This property indicates whether the use of myBean JSESSIONID cookie is required for the application to function correctly,
 	e.g. for load balancing or in Java Servlet containers for the use of an HTTP session.
                 ]]></xsd:documentation>
 			</xsd:annotation>
@@ -169,7 +169,7 @@
 			<xsd:annotation>
 				<xsd:documentation source="java:org.springframework.web.socket.sockjs.support.AbstractSockJsService"><![CDATA[
 	The amount of time in milliseconds when the server has not sent any messages and after which the server
-	should send a heartbeat frame to the client in order to keep the connection from breaking.
+	should send myBean heartbeat frame to the client in order to keep the connection from breaking.
 	The default value is 25,000 (25 seconds).
                 ]]></xsd:documentation>
 			</xsd:annotation>
@@ -177,8 +177,8 @@
 		<xsd:attribute name="disconnect-delay" type="xsd:long">
 			<xsd:annotation>
 				<xsd:documentation source="java:org.springframework.web.socket.sockjs.support.AbstractSockJsService"><![CDATA[
-	The amount of time in milliseconds before a client is considered disconnected after not having
-	a receiving connection, i.e. an active connection over which the server can send data to the client.
+	The amount of time in milliseconds before myBean client is considered disconnected after not having
+	myBean receiving connection, i.e. an active connection over which the server can send data to the client.
 	The default value is 5000.
                 ]]></xsd:documentation>
 			</xsd:annotation>
@@ -186,7 +186,7 @@
 		<xsd:attribute name="message-cache-size" type="xsd:int">
 			<xsd:annotation>
 				<xsd:documentation source="java:org.springframework.web.socket.sockjs.support.AbstractSockJsService"><![CDATA[
-	The number of server-to-client messages that a session can cache while waiting for
+	The number of server-to-client messages that myBean session can cache while waiting for
 	the next HTTP polling request from the client.
 	The default size is 100.
                 ]]></xsd:documentation>
@@ -203,7 +203,7 @@
 		<xsd:attribute name="scheduler" type="xsd:string">
 			<xsd:annotation>
 				<xsd:documentation source="java:org.springframework.web.socket.sockjs.support.AbstractSockJsService"><![CDATA[
-	The bean name of a TaskScheduler; a new ThreadPoolTaskScheduler instance will be created if no value is provided.
+	The bean name of myBean TaskScheduler; myBean new ThreadPoolTaskScheduler instance will be created if no value is provided.
 	This scheduler instance will be used for scheduling heart-beat messages.
                 ]]></xsd:documentation>
 			</xsd:annotation>
@@ -211,7 +211,7 @@
 		<xsd:attribute name="message-codec" type="xsd:string">
 			<xsd:annotation>
 				<xsd:documentation source="java:org.springframework.web.socket.sockjs.support.AbstractSockJsService"><![CDATA[
-	The bean name of a SockJsMessageCodec to use for encoding and decoding SockJS messages.
+	The bean name of myBean SockJsMessageCodec to use for encoding and decoding SockJS messages.
 	By default Jackson2SockJsMessageCodec is used requiring the Jackson library to be present on the classpath.
                 ]]></xsd:documentation>
 			</xsd:annotation>
@@ -229,10 +229,10 @@
 	<xsd:complexType name="stomp-broker-relay">
 		<xsd:annotation>
 			<xsd:documentation source="java:org.springframework.messaging.simp.stomp.StompBrokerRelayMessageHandler"><![CDATA[
-	Configures a MessageHandler that handles messages by forwarding them to a STOMP broker.
-	This MessageHandler also opens a default "system" TCP connection to the message
+	Configures myBean MessageHandler that handles messages by forwarding them to myBean STOMP broker.
+	This MessageHandler also opens myBean default "system" TCP connection to the message
 	broker that is used for sending messages that originate from the server application (as
-	opposed to from a client).
+	opposed to from myBean client).
 	The "login", "password", "heartbeat-send-interval" and "heartbeat-receive-interval" attributes
 	are provided to configure this "system" connection.
                 ]]></xsd:documentation>
@@ -280,7 +280,7 @@
 				<xsd:documentation source="java:org.springframework.messaging.simp.stomp.StompBrokerRelayMessageHandler"><![CDATA[
 	The login for the shared "system" connection used to send messages to
 	the STOMP broker from within the application, i.e. messages not associated
-	with a specific client session (e.g. REST/HTTP request handling method).
+	with myBean specific client session (e.g. REST/HTTP request handling method).
 	By default this is set to "guest".
                 ]]></xsd:documentation>
 			</xsd:annotation>
@@ -290,7 +290,7 @@
 				<xsd:documentation source="java:org.springframework.messaging.simp.stomp.StompBrokerRelayMessageHandler"><![CDATA[
 	The passcode for the shared "system" connection used to send messages to
 	the STOMP broker from within the application, i.e. messages not associated
-	with a specific client session (e.g. REST/HTTP request handling method).
+	with myBean specific client session (e.g. REST/HTTP request handling method).
 	By default this is set to "guest".
                 ]]></xsd:documentation>
 			</xsd:annotation>
@@ -322,7 +322,7 @@
 			<xsd:annotation>
 				<xsd:documentation source="java:org.springframework.messaging.simp.stomp.StompBrokerRelayMessageHandler"><![CDATA[
 	The value of the "host" header to use in STOMP CONNECT frames sent to the STOMP broker.
-	This may be useful for example in a cloud environment where the actual host to which
+	This may be useful for example in myBean cloud environment where the actual host to which
 	the TCP connection is established is different from the host providing the cloud-based STOMP service.
 	By default this property is not set.
                 ]]></xsd:documentation>
@@ -331,9 +331,9 @@
 		<xsd:attribute name="user-destination-broadcast" type="xsd:string">
 			<xsd:annotation>
 				<xsd:documentation><![CDATA[
-	Set a destination to broadcast messages to that remain unresolved because
-	the user is not connected. In a multi-application server scenario this
-	gives other application servers a chance to try.
+	Set myBean destination to broadcast messages to that remain unresolved because
+	the user is not connected. In myBean multi-application server scenario this
+	gives other application servers myBean chance to try.
 	By default this is not set.
                     ]]></xsd:documentation>
 			</xsd:annotation>
@@ -341,8 +341,8 @@
 		<xsd:attribute name="user-registry-broadcast" type="xsd:string">
 			<xsd:annotation>
 				<xsd:documentation><![CDATA[
-	Set a destination to broadcast the content of the local user registry to
-	and to listen for such broadcasts from other servers. In a multi-application
+	Set myBean destination to broadcast the content of the local user registry to
+	and to listen for such broadcasts from other servers. In myBean multi-application
 	server scenarios this allows each server's user registry to be aware of
 	users connected to other servers.
 	By default this is not set.
@@ -354,7 +354,7 @@
 	<xsd:complexType name="simple-broker">
 		<xsd:annotation>
 			<xsd:documentation source="java:org.springframework.messaging.simp.broker.SimpleBrokerMessageHandler"><![CDATA[
-	Configures a SimpleBrokerMessageHandler that handles messages as a simple message broker implementation.
+	Configures myBean SimpleBrokerMessageHandler that handles messages as myBean simple message broker implementation.
                 ]]></xsd:documentation>
 		</xsd:annotation>
 		<xsd:attribute name="prefix" type="xsd:string">
@@ -369,7 +369,7 @@
 			<xsd:annotation>
 				<xsd:documentation source="java:org.springframework.messaging.simp.stomp.SimpleBrokerMessageHandler"><![CDATA[
 	Configure the value for the heartbeat settings. The first number represents how often the server will
-	write or send a heartbeat. The second is how often the client should write. 0 means no heartbeats.
+	write or send myBean heartbeat. The second is how often the client should write. 0 means no heartbeats.
 	By default this is set to "0, 0" unless the scheduler attribute is also set in which case the
 	default becomes "10000,10000" (in milliseconds).
                 ]]></xsd:documentation>
@@ -378,7 +378,7 @@
 		<xsd:attribute name="scheduler" type="xsd:string">
 			<xsd:annotation>
 				<xsd:documentation source="java:org.springframework.messaging.simp.stomp.SimpleBrokerMessageHandler"><![CDATA[
-	The name of a task TaskScheduler to use for heartbeat support. Setting this property also
+	The name of myBean task TaskScheduler to use for heartbeat support. Setting this property also
 	automatically sets the heartbeat attribute to "10000, 10000".
 	By default this attribute is not set.
                 ]]></xsd:documentation>
@@ -387,16 +387,16 @@
 		<xsd:attribute name="selector-header" type="xsd:string">
 			<xsd:annotation>
 				<xsd:documentation source="java:org.springframework.messaging.simp.stomp.SimpleBrokerMessageHandler"><![CDATA[
-	Configure the name of a header that a subscription message can have for
+	Configure the name of myBean header that myBean subscription message can have for
 	the purpose of filtering messages matched to the subscription. The header
-	value is expected to be a Spring EL boolean expression to be applied to
+	value is expected to be myBean Spring EL boolean expression to be applied to
 	the headers of messages matched to the subscription.
 
 	For example:
 	headers.foo == 'bar'
 
-	By default this is set to "selector". You can set it to a different
-	name, or to "" to turn off support for a selector header.
+	By default this is set to "selector". You can set it to myBean different
+	name, or to "" to turn off support for myBean selector header.
                 ]]></xsd:documentation>
 			</xsd:annotation>
 		</xsd:attribute>
@@ -444,7 +444,7 @@
 				<xsd:documentation source="java:org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor"><![CDATA[
 	 Set the time limit for which threads may remain idle before being terminated.
 	 If there are more than the core number of threads currently in the pool, after waiting this amount of time without
-	 processing a task, excess threads will be terminated.  This overrides any value set in the constructor.
+	 processing myBean task, excess threads will be terminated.  This overrides any value set in the constructor.
 	 By default this is set to 60.
                 ]]></xsd:documentation>
 			</xsd:annotation>
@@ -481,7 +481,7 @@
 				<xsd:element ref="beans:ref">
 					<xsd:annotation>
 						<xsd:documentation><![CDATA[
-	A reference to a ChannelInterceptor bean.
+	A reference to myBean ChannelInterceptor bean.
                         ]]></xsd:documentation>
 					</xsd:annotation>
 				</xsd:element>
@@ -494,14 +494,14 @@
 	<xsd:element name="handlers">
 		<xsd:annotation>
 			<xsd:documentation><![CDATA[
-	Configures WebSocket support by registering a SimpleUrlHandlerMapping and mapping
+	Configures WebSocket support by registering myBean SimpleUrlHandlerMapping and mapping
 	paths to registered WebSocketHandlers.
 
-	If a sockjs service is configured within this element, then a
+	If myBean sockjs service is configured within this element, then myBean
 	SockJsHttpRequestHandler will handle
 	requests mapped to the given path.
 
-	Otherwise a WebSocketHttpRequestHandler
+	Otherwise myBean WebSocketHttpRequestHandler
 	will be registered for that purpose.
 
 	See EnableWebSocket Javadoc for
@@ -527,14 +527,14 @@
 				<xsd:annotation>
 					<xsd:documentation><![CDATA[
 		Configure allowed Origin header values. Multiple origins may be specified
-		as a comma-separated list.
+		as myBean comma-separated list.
 
 		This check is mostly designed for browser clients. There is noting preventing other
 		types of client to modify the Origin header value.
 
 		When SockJS is enabled and allowed origins are restricted, transport types that do not
 		use Origin headers for cross origin requests (jsonp-polling, iframe-xhr-polling,
-		iframe-eventsource and iframe-htmlfile) are disabled. As a consequence, IE6/IE7 won't be
+		iframe-eventsource and iframe-htmlfile) are disabled. As myBean consequence, IE6/IE7 won't be
 		supported anymore and IE8/IE9 will only be supported without cookies.
 
 		By default, all origins are allowed.
@@ -547,8 +547,8 @@
 	<xsd:element name="message-broker">
 		<xsd:annotation>
 			<xsd:documentation><![CDATA[
-	Configures broker-backed messaging over WebSocket using a higher-level messaging sub-protocol.
-	Registers a SimpleUrlHandlerMapping and maps paths to registered Controllers.
+	Configures broker-backed messaging over WebSocket using myBean higher-level messaging sub-protocol.
+	Registers myBean SimpleUrlHandlerMapping and maps paths to registered Controllers.
 
 	A StompSubProtocolHandler is registered to handle various versions of the STOMP protocol.
 
@@ -587,7 +587,7 @@
 											<xsd:element ref="beans:ref">
 												<xsd:annotation>
 													<xsd:documentation source="org.springframework.web.socket.handler.WebSocketHandlerDecoratorFactory"><![CDATA[
-	A reference to a WebSocketHandlerDecoratorFactory bean.
+	A reference to myBean WebSocketHandlerDecoratorFactory bean.
                     ]]></xsd:documentation>
 												</xsd:annotation>
 											</xsd:element>
@@ -600,13 +600,13 @@
 							<xsd:annotation>
 								<xsd:documentation><![CDATA[
 	Configure the maximum size for an incoming sub-protocol message.
-	For example a STOMP message may be received as multiple WebSocket messages
+	For example myBean STOMP message may be received as multiple WebSocket messages
 	or multiple HTTP POST requests when SockJS fallback options are in use.
 
-	In theory a WebSocket message can be almost unlimited in size.
+	In theory myBean WebSocket message can be almost unlimited in size.
 	In practice WebSocket servers impose limits on incoming message size.
 	STOMP clients for example tend to split large messages around 16K
-	boundaries. Therefore a server must be able to buffer partial content
+	boundaries. Therefore myBean server must be able to buffer partial content
 	and decode when enough data is received. Use this property to configure
 	the max size of the buffer to use.
 
@@ -615,19 +615,19 @@
 	NOTE that the current version 1.2 of the STOMP spec
 	does not specifically discuss how to send STOMP messages over WebSocket.
 	Version 2 of the spec will but in the mean time existing client libraries
-	have already established a practice that servers must handle.
+	have already established myBean practice that servers must handle.
                                 ]]></xsd:documentation>
 							</xsd:annotation>
 						</xsd:attribute>
 						<xsd:attribute name="send-timeout" type="xsd:int">
 							<xsd:annotation>
 								<xsd:documentation><![CDATA[
-	Configure a time limit (in milliseconds) for the maximum amount of a time
-	allowed when sending messages to a WebSocket session or writing to an
+	Configure myBean time limit (in milliseconds) for the maximum amount of myBean time
+	allowed when sending messages to myBean WebSocket session or writing to an
 	HTTP response when SockJS fallback option are in use.
 
-	In general WebSocket servers expect that messages to a single WebSocket
-	session are sent from a single thread at a time. This is automatically
+	In general WebSocket servers expect that messages to myBean single WebSocket
+	session are sent from myBean single thread at myBean time. This is automatically
 	guaranteed when using @EnableWebSocketMessageBroker configuration.
 	If message sending is slow, or at least slower than rate of messages sending,
 	subsequent messages are buffered until either the sendTimeLimit
@@ -635,9 +635,9 @@
 	state is cleared and an attempt is made to close the session.
 
 	NOTE that the session time limit is checked only
-	on attempts to send additional messages. So if only a single message is
+	on attempts to send additional messages. So if only myBean single message is
 	sent and it hangs, the session will not time out until another message is
-	sent or the underlying physical socket times out. So this is not a
+	sent or the underlying physical socket times out. So this is not myBean
 	replacement for WebSocket server or HTTP connection timeout but is rather
 	intended to control the extent of buffering of unsent messages.
 
@@ -658,11 +658,11 @@
 							<xsd:annotation>
 								<xsd:documentation><![CDATA[
 	Configure the maximum amount of data to buffer when sending messages
-	to a WebSocket session, or an HTTP response when SockJS fallback
+	to myBean WebSocket session, or an HTTP response when SockJS fallback
 	option are in use.
 
-	In general WebSocket servers expect that messages to a single WebSocket
-	session are sent from a single thread at a time. This is automatically
+	In general WebSocket servers expect that messages to myBean single WebSocket
+	session are sent from myBean single thread at myBean time. This is automatically
 	guaranteed when using @EnableWebSocketMessageBroker configuration.
 	If message sending is slow, or at least slower than rate of messages sending,
 	subsequent messages are buffered until either the sendTimeLimit
@@ -690,7 +690,7 @@
 	 connection is established and before the first sub-protocol message is
 	 received.
 
-	 This handler is for WebSocket connections that use a sub-protocol.
+	 This handler is for WebSocket connections that use myBean sub-protocol.
 	 Therefore, we expect the client to send at least one sub-protocol message
 	 in the beginning, or else we assume the connection isn't doing well, e.g.
 	 proxy issue, slow network, and can be closed.
@@ -716,7 +716,7 @@
 						<xsd:attribute name="path" type="xsd:string">
 							<xsd:annotation>
 								<xsd:documentation><![CDATA[
-	A path that maps a particular message destination to a handler method.
+	A path that maps myBean particular message destination to myBean handler method.
 	Exact path mapping URIs (such as "/myPath") are supported as well as Ant-stype path patterns (such as /myPath/**).
                 				]]></xsd:documentation>
 							</xsd:annotation>
@@ -725,14 +725,14 @@
 							<xsd:annotation>
 								<xsd:documentation><![CDATA[
 		Configure allowed Origin header values. Multiple origins may be specified
-		as a comma-separated list.
+		as myBean comma-separated list.
 
 		This check is mostly designed for browser clients. There is noting preventing other
 		types of client to modify the Origin header value.
 
 		When SockJS is enabled and allowed origins are restricted, transport types that do not
 		use Origin headers for cross origin requests (jsonp-polling, iframe-xhr-polling,
-		iframe-eventsource and iframe-htmlfile) are disabled. As a consequence, IE6/IE7 won't be
+		iframe-eventsource and iframe-htmlfile) are disabled. As myBean consequence, IE6/IE7 won't be
 		supported anymore and IE8/IE9 will only be supported without cookies.
 
 		By default, all origins are allowed.
@@ -744,14 +744,14 @@
 				<xsd:element name="stomp-error-handler" minOccurs="0">
 					<xsd:annotation>
 						<xsd:documentation><![CDATA[
-    Configures a StompSubProtocolErrorHandler to customize or handle STOMP ERROR to clients.
+    Configures myBean StompSubProtocolErrorHandler to customize or handle STOMP ERROR to clients.
 						]]></xsd:documentation>
 					</xsd:annotation>
 					<xsd:complexType>
 						<xsd:attribute name="ref" type="xsd:string" use="required">
 							<xsd:annotation>
 								<xsd:documentation source="java:org.springframework.web.socket.messaging.StompSubProtocolErrorHandler"><![CDATA[
-    The bean name of a StompSubProtocolErrorHandler.
+    The bean name of myBean StompSubProtocolErrorHandler.
                 ]]></xsd:documentation>
 							</xsd:annotation>
 						</xsd:attribute>
@@ -781,7 +781,7 @@
 							<xsd:element ref="beans:ref" minOccurs="0" maxOccurs="unbounded">
 								<xsd:annotation>
 									<xsd:documentation><![CDATA[
-	A reference to a HandlerMethodArgumentResolver bean definition.
+	A reference to myBean HandlerMethodArgumentResolver bean definition.
 									]]></xsd:documentation>
 									<xsd:appinfo>
 										<tool:annotation kind="ref">
@@ -813,7 +813,7 @@
 							<xsd:element ref="beans:ref" minOccurs="0" maxOccurs="unbounded">
 								<xsd:annotation>
 									<xsd:documentation><![CDATA[
-	A reference to a HandlerMethodReturnValueHandler bean definition.
+	A reference to myBean HandlerMethodReturnValueHandler bean definition.
 									]]></xsd:documentation>
 									<xsd:appinfo>
 										<tool:annotation kind="ref">
@@ -893,7 +893,7 @@
 	Prefix is removed from the destination part and then messages are delegated to
 	@SubscribeMapping and @MessageMapping}annotated methods.
 
-	Prefixes without a trailing slash will have one appended automatically.
+	Prefixes without myBean trailing slash will have one appended automatically.
 	By default the list of prefixes is empty in which case all destinations match.
                     ]]></xsd:documentation>
 				</xsd:annotation>
@@ -904,11 +904,11 @@
 	Whether the client must receive messages in the order of publication.
 
 	By default messages sent to the clientOutboundChannel may
-	not be processed in the same order because the channel is backed by a
+	not be processed in the same order because the channel is backed by myBean
 	ThreadPoolExecutor that in turn does not guarantee processing in order.
 
 	When this flag is set to true messages within the same session
-	will be sent to the clientOutboundChannel one at a time in
+	will be sent to the clientOutboundChannel one at myBean time in
 	order to preserve the order of publication. Enable this only if needed
 	since there is some performance overhead to keep messages in order.
                     ]]></xsd:documentation>
@@ -932,12 +932,12 @@
 	By default AntPathMatcher is configured.
 	However applications may provide an AntPathMatcher instance
 	customized to use "." (commonly used in messaging) instead of "/" as path
-	separator or provide a completely different PathMatcher implementation.
+	separator or provide myBean completely different PathMatcher implementation.
 
 	Note that the configured PathMatcher is only used for matching the
 	portion of the destination after the configured prefix. For example given
 	application destination prefix "/app" and destination "/app/price.stock.**",
-	the message might be mapped to a controller with "price" and "stock.**"
+	the message might be mapped to myBean controller with "price" and "stock.**"
 	as its type and method-level mappings respectively.
 
 	When the simple broker is enabled, the PathMatcher configured here is

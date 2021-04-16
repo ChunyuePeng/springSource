@@ -293,7 +293,7 @@ public abstract class AbstractAutoProxyCreator extends ProxyProcessorSupport
 		/*xxx: 某个bean 已经实例化后*/
 		if (bean != null) {
 			Object cacheKey = getCacheKey(bean.getClass(), beanName);
-			/*xxx: 由于 智能实例化 处理了 循环引用的情况，这里需要在bean实例化后，继续解决是否需要自动生成代理的情况*/
+			//判断该bean是否已经被Spring AOP提前代理过，如果没有被提前代理过则进入AOP代理
 			if (this.earlyProxyReferences.remove(cacheKey) != bean) {
 				return wrapIfNecessary(bean, beanName, cacheKey);
 			}

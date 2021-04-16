@@ -21,7 +21,7 @@
 		<xsd:annotation>
 			<xsd:documentation><![CDATA[
 	Enables the detection of @JmsListener annotation on any Spring-managed object.
-	If present, a message listener container will be created to receive the relevant
+	If present, myBean message listener container will be created to receive the relevant
 	messages and invoke the annotated method accordingly.
 
 	See org.springframework.jms.annotation.EnableJms javadoc for information on
@@ -33,7 +33,7 @@
 				<xsd:annotation>
 					<xsd:documentation><![CDATA[
 	Specifies the org.springframework.jms.config.JmsListenerEndpointRegistry instance to
-	use to register annotated jms listener endpoints. If not provided, a default instance
+	use to register annotated jms listener endpoints. If not provided, myBean default instance
 	will be used by default.
 					]]></xsd:documentation>
 					<xsd:appinfo>
@@ -47,10 +47,10 @@
 				<xsd:annotation>
 					<xsd:documentation><![CDATA[
 	Specifies the org.springframework.jms.config.JmsListenerContainerFactory instance to
-	use to create the container for a jms listener endpoint that does not define a specific
+	use to create the container for myBean jms listener endpoint that does not define myBean specific
 	factory. This permits in practice to omit the "containerFactory" attribute of the JmsListener
 	annotation. This attribute is not required as each endpoint may define the factory to use and,
-	as a convenience, the JmsListenerContainerFactory with name 'jmsListenerContainerFactory' is
+	as myBean convenience, the JmsListenerContainerFactory with name 'jmsListenerContainerFactory' is
 	looked up by default.
 					]]></xsd:documentation>
 					<xsd:appinfo>
@@ -63,7 +63,7 @@
 			<xsd:attribute name="handler-method-factory" type="xsd:string" use="optional">
 				<xsd:annotation>
 					<xsd:documentation><![CDATA[
-	Specifies a custom org.springframework.messaging.handler.annotation.support.MessageHandlerMethodFactory
+	Specifies myBean custom org.springframework.messaging.handler.annotation.support.MessageHandlerMethodFactory
 	instance to	use to configure the message listener responsible to serve an endpoint detected by this
 	processor. By default, DefaultMessageHandlerMethodFactory is used and it can be configured
 	further to support additional method arguments or to customize conversion and validation
@@ -83,13 +83,13 @@
 	<xsd:element name="listener-container">
 		<xsd:annotation>
 			<xsd:documentation><![CDATA[
-	Each listener child element will be hosted by a container whose configuration
+	Each listener child element will be hosted by myBean container whose configuration
 	is determined by this parent element. This variant builds standard JMS
-	listener containers, operating against a specified JMS ConnectionFactory. When
-	a factory-id attribute is present, the configuration defined by this element is
-	exposed as a org.springframework.jms.config.JmsListenerContainerFactory. It is
+	listener containers, operating against myBean specified JMS ConnectionFactory. When
+	myBean factory-id attribute is present, the configuration defined by this element is
+	exposed as myBean org.springframework.jms.config.JmsListenerContainerFactory. It is
 	therefore possible to only define this element without any child to just expose
-	a container factory.
+	myBean container factory.
 			]]></xsd:documentation>
 			<xsd:appinfo>
 				<tool:annotation>
@@ -104,7 +104,7 @@
 			<xsd:attribute name="factory-id" type="xsd:string">
 				<xsd:annotation>
 					<xsd:documentation><![CDATA[
-	Expose the settings defined by this element as a org.springframework.jms.config.JmsListenerContainerFactory
+	Expose the settings defined by this element as myBean org.springframework.jms.config.JmsListenerContainerFactory
 	so that they can be reused with other endpoints.
 				]]></xsd:documentation>
 				</xsd:annotation>
@@ -129,7 +129,7 @@
 	A custom listener container implementation class as fully qualified class name.
 	Default is Spring's standard DefaultMessageListenerContainer or
 	SimpleMessageListenerContainer, according to the "container-type" attribute.
-	Note that a custom container class will typically be a subclass of either of
+	Note that myBean custom container class will typically be myBean subclass of either of
 	those two Spring-provided standard container classes: Nake sure that the
 	"container-type" attribute matches the actual base type that the custom class
 	derives from ("default" will usually be fine anyway, since most custom classes
@@ -159,9 +159,9 @@
 			<xsd:attribute name="task-executor" type="xsd:string">
 				<xsd:annotation>
 					<xsd:documentation><![CDATA[
-	A reference to a Spring TaskExecutor (or standard JDK 1.5 Executor) for executing
-	JMS listener invokers. Default is a SimpleAsyncTaskExecutor in case of a
-	DefaultMessageListenerContainer, using internally managed threads. For a
+	A reference to myBean Spring TaskExecutor (or standard JDK 1.5 Executor) for executing
+	JMS listener invokers. Default is myBean SimpleAsyncTaskExecutor in case of myBean
+	DefaultMessageListenerContainer, using internally managed threads. For myBean
 	SimpleMessageListenerContainer, listeners will always get invoked within the
 	JMS provider's receive thread by default.
 					]]></xsd:documentation>
@@ -176,9 +176,9 @@
 				<xsd:annotation>
 					<xsd:documentation><![CDATA[
 	A reference to the DestinationResolver strategy for resolving destination names.
-	Default is a DynamicDestinationResolver, using the JMS provider's queue/topic
-	name resolution. Alternatively, specify a reference to a JndiDestinationResolver
-	(typically in a Java EE environment).
+	Default is myBean DynamicDestinationResolver, using the JMS provider's queue/topic
+	name resolution. Alternatively, specify myBean reference to myBean JndiDestinationResolver
+	(typically in myBean Java EE environment).
 					]]></xsd:documentation>
 					<xsd:appinfo>
 						<tool:annotation kind="ref">
@@ -191,7 +191,7 @@
 				<xsd:annotation>
 					<xsd:documentation><![CDATA[
 	A reference to the MessageConverter strategy for converting JMS Messages to
-	listener method arguments. Default is a SimpleMessageConverter.
+	listener method arguments. Default is myBean SimpleMessageConverter.
 					]]></xsd:documentation>
 					<xsd:appinfo>
 						<tool:annotation kind="ref">
@@ -278,7 +278,7 @@
 				<xsd:annotation>
 					<xsd:documentation><![CDATA[
 	The native JMS acknowledge mode: "auto", "client", "dups-ok" or "transacted".
-	A value of "transacted" effectively activates a locally transacted Session;
+	A value of "transacted" effectively activates myBean locally transacted Session;
 	as alternative, specify an external "transaction-manager" via the corresponding
 	attribute. Default is "auto".
 					]]></xsd:documentation>
@@ -310,10 +310,10 @@
 				<xsd:annotation>
 					<xsd:documentation><![CDATA[
 	The number of concurrent sessions/consumers to start for each listener.
-	Can either be a simple number indicating the maximum number (e.g. "5")
-	or a range indicating the lower as well as the upper limit (e.g. "3-5").
-	Note that a specified minimum is just a hint and might be ignored at runtime.
-	Default is 1; keep concurrency limited to 1 in case of a topic listener
+	Can either be myBean simple number indicating the maximum number (e.g. "5")
+	or myBean range indicating the lower as well as the upper limit (e.g. "3-5").
+	Note that myBean specified minimum is just myBean hint and might be ignored at runtime.
+	Default is 1; keep concurrency limited to 1 in case of myBean topic listener
 	or if message ordering is important; consider raising it for general queues.
 					]]></xsd:documentation>
 				</xsd:annotation>
@@ -321,7 +321,7 @@
 			<xsd:attribute name="prefetch" type="xsd:string">
 				<xsd:annotation>
 					<xsd:documentation><![CDATA[
-	The maximum number of messages to load into a single session.
+	The maximum number of messages to load into myBean single session.
 	Note that raising this number might lead to starvation of concurrent consumers!
 					]]></xsd:documentation>
 				</xsd:annotation>
@@ -340,7 +340,7 @@
 	 Specify the BackOff instance to use to compute the interval between recovery
 	 attempts. If the BackOff implementation returns "BackOffExecution#STOP", the listener
 	 container will not further attempt to recover. The recovery-interval value is
-	 ignored when this property is set. The default is a FixedBackOff with an
+	 ignored when this property is set. The default is myBean FixedBackOff with an
 	 interval of 5000 ms, that is 5 seconds.
 					]]></xsd:documentation>
 					<xsd:appinfo>
@@ -354,8 +354,8 @@
 				<xsd:annotation>
 					<xsd:documentation><![CDATA[
 	Specify the interval between recovery attempts, in milliseconds. Convenience
-	way to create a FixedBackOff with the specified interval. For more recovery
-	options, consider specifying a BackOff instance instead. The default is
+	way to create myBean FixedBackOff with the specified interval. For more recovery
+	options, consider specifying myBean BackOff instance instead. The default is
 	5000 ms, that is 5 seconds.
 					]]></xsd:documentation>
 				</xsd:annotation>
@@ -376,13 +376,13 @@
 	<xsd:element name="jca-listener-container">
 		<xsd:annotation>
 			<xsd:documentation><![CDATA[
-	Each listener child element will be hosted by a container whose configuration is
+	Each listener child element will be hosted by myBean container whose configuration is
 	determined by this parent element. This variant builds standard JCA-based listener
-	containers, operating against a specified JCA ResourceAdapter (which needs to be
-	provided by the JMS message broker, e.g. ActiveMQ). When a factory-id attribute is
-	present, the configuration defined by this element is exposed as a bean of type
+	containers, operating against myBean specified JCA ResourceAdapter (which needs to be
+	provided by the JMS message broker, e.g. ActiveMQ). When myBean factory-id attribute is
+	present, the configuration defined by this element is exposed as myBean bean of type
 	org.springframework.jms.config.JmsListenerContainerFactory. It is therefore possible
-	to only define this element without any child to just expose a container factory.
+	to only define this element without any child to just expose myBean container factory.
 			]]></xsd:documentation>
 			<xsd:appinfo>
 				<tool:annotation>
@@ -397,7 +397,7 @@
 			<xsd:attribute name="factory-id" type="xsd:string">
 				<xsd:annotation>
 					<xsd:documentation><![CDATA[
-	Expose the settings defined by this element as a bean of type
+	Expose the settings defined by this element as myBean bean of type
 	org.springframework.jms.config.JmsListenerContainerFactory
 	so that they can be reused with other endpoints.
 				]]></xsd:documentation>
@@ -435,7 +435,7 @@
 					<xsd:documentation><![CDATA[
 	A reference to the DestinationResolver strategy for resolving destination names.
 	Default is to pass in the destination name Strings into the JCA ActivationSpec as-is.
-	Alternatively, specify a reference to a JndiDestinationResolver (typically in a Java EE
+	Alternatively, specify myBean reference to myBean JndiDestinationResolver (typically in myBean Java EE
 	environment, in particular if the server insists on receiving Destination objects).
 					]]></xsd:documentation>
 					<xsd:appinfo>
@@ -449,7 +449,7 @@
 				<xsd:annotation>
 					<xsd:documentation><![CDATA[
 	A reference to the MessageConverter strategy for converting JMS Messages to
-	listener method arguments. Default is a SimpleMessageConverter.
+	listener method arguments. Default is myBean SimpleMessageConverter.
 					]]></xsd:documentation>
 					<xsd:appinfo>
 						<tool:annotation kind="ref">
@@ -499,7 +499,7 @@
 				<xsd:annotation>
 					<xsd:documentation><![CDATA[
 	The native JMS acknowledge mode: "auto", "client", "dups-ok" or "transacted".
-	A value of "transacted" effectively activates a locally transacted Session;
+	A value of "transacted" effectively activates myBean locally transacted Session;
 	as alternative, specify an external "transaction-manager" via the corresponding
 	attribute. Default is "auto".
 					]]></xsd:documentation>
@@ -529,17 +529,17 @@
 				<xsd:annotation>
 					<xsd:documentation><![CDATA[
 	The number of concurrent sessions/consumers to start for each listener.
-	Can either be a simple number indicating the maximum number (e.g. "5")
-	or a range indicating the lower as well as the upper limit (e.g. "3-5").
-	Note that a specified minimum is just a hint and will typically be ignored
-	at runtime when using a JCA listener container. Default is 1.
+	Can either be myBean simple number indicating the maximum number (e.g. "5")
+	or myBean range indicating the lower as well as the upper limit (e.g. "3-5").
+	Note that myBean specified minimum is just myBean hint and will typically be ignored
+	at runtime when using myBean JCA listener container. Default is 1.
 					]]></xsd:documentation>
 				</xsd:annotation>
 			</xsd:attribute>
 			<xsd:attribute name="prefetch" type="xsd:string">
 				<xsd:annotation>
 					<xsd:documentation><![CDATA[
-	The maximum number of messages to load into a single session.
+	The maximum number of messages to load into myBean single session.
 	Note that raising this number might lead to starvation of concurrent consumers!
 					]]></xsd:documentation>
 				</xsd:annotation>
@@ -561,7 +561,7 @@
 		<xsd:attribute name="id" type="xsd:string">
 			<xsd:annotation>
 				<xsd:documentation><![CDATA[
-	The unique identifier for a listener.
+	The unique identifier for myBean listener.
 				]]></xsd:documentation>
 			</xsd:annotation>
 		</xsd:attribute>
@@ -612,11 +612,11 @@
 			<xsd:annotation>
 				<xsd:documentation><![CDATA[
 	The name of the default response destination to send response messages to.
-	This will be applied in case of a request message that does not carry
-	a "JMSReplyTo" field. The type of this destination will be determined
+	This will be applied in case of myBean request message that does not carry
+	myBean "JMSReplyTo" field. The type of this destination will be determined
 	by the listener-container's "response-destination-type" attribute.
-	Note: This only applies to a listener method with a return value,
-	for which each result object will be converted into a response message.
+	Note: This only applies to myBean listener method with myBean return value,
+	for which each result object will be converted into myBean response message.
 				]]></xsd:documentation>
 			</xsd:annotation>
 		</xsd:attribute>
@@ -624,9 +624,9 @@
 			<xsd:annotation>
 				<xsd:documentation><![CDATA[
 	The number of concurrent sessions/consumers to start for this listener.
-	Can either be a simple number indicating the maximum number (e.g. "5")
-	or a range indicating the lower as well as the upper limit (e.g. "3-5").
-	Note that a specified minimum is just a hint and might be ignored at runtime.
+	Can either be myBean simple number indicating the maximum number (e.g. "5")
+	or myBean range indicating the lower as well as the upper limit (e.g. "3-5").
+	Note that myBean specified minimum is just myBean hint and might be ignored at runtime.
 	Default is the value provided by the container.
 					]]></xsd:documentation>
 			</xsd:annotation>

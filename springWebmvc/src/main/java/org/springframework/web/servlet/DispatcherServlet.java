@@ -498,12 +498,18 @@ public class DispatcherServlet extends FrameworkServlet {
 	 */
 	protected void initStrategies(ApplicationContext context) {
 		/*xxx: 1.MultipartResolver组件*/
+		//文件上传解决器
 		initMultipartResolver(context);
 		/*xxx: 2.localeResolver组件*/
+		//国际化解决器
 		initLocaleResolver(context);
 		/*xxx: 3.themeResolver组件*/
+		//主题解析器
 		initThemeResolver(context);
 		/*xxx: 4.handlerMapping组件*/
+		//当客户发出Request时DispatcherServlet会将Request及交给HandlerMapper,
+		//然后HandlerMapper根据WebApplicationContext的配置回传给DispatcherServlet
+		//相应的Controller
 		initHandlerMappings(context);
 		/*xxx: 5.handlerAdapter组件*/
 		initHandlerAdapters(context);
@@ -542,6 +548,8 @@ public class DispatcherServlet extends FrameworkServlet {
 	}
 
 	/**
+	 * 在Spring的国际化配置中一共有三种使用方式：基于URL参数的配置、
+	 * 基于session的配置、基于cookie的国际化配置
 	 * Initialize the LocaleResolver used by this class.
 	 * <p>If no bean is defined with the given name in the BeanFactory for this namespace,
 	 * we default to AcceptHeaderLocaleResolver.
@@ -602,6 +610,7 @@ public class DispatcherServlet extends FrameworkServlet {
 	private void initHandlerMappings(ApplicationContext context) {
 		this.handlerMappings = null;
 
+		//默认情况下SpringMVC将加载当前系统中所有实现了HandlerMapping的接口bean
 		if (this.detectAllHandlerMappings) {
 			// Find all HandlerMappings in the ApplicationContext, including ancestor contexts.
 			Map<String, HandlerMapping> matchingBeans =
@@ -1060,7 +1069,8 @@ public class DispatcherServlet extends FrameworkServlet {
 			Exception dispatchException = null;
 
 			try {
-				/*xxx: 检查是不是上传文件*/
+				/*xxx: 检查是不是上传文件请求*/
+				//如果是MultipartContent类型的request则转换request为MultipartHttpServletRequest类型的request
 				processedRequest = checkMultipart(request);
 				multipartRequestParsed = (processedRequest != request);
 
@@ -1096,6 +1106,7 @@ public class DispatcherServlet extends FrameworkServlet {
 				// Actually invoke the handler.
 				/*xxx: 用 handlerAdapter 处理 handler*/
 				/*xxx: controller 便是在此处执行的*/
+				//真正的激活handler并返回视图
 				mv = ha.handle(processedRequest, response, mappedHandler.getHandler());
 
 				/*xxx: 如果需要异步处理，直接返回 */
@@ -1104,8 +1115,9 @@ public class DispatcherServlet extends FrameworkServlet {
 				}
 
 				/*xxx: 当 view 为空时， (如,Handler 返回值 为 void)， 则根据 request 设置 默认 view*/
+				//视图名称转换应用于需要添加前缀后缀的情况
 				applyDefaultViewName(processedRequest, mv);
-				/*xxx: 执行 相应 Interceptor 的 postHandle*/
+				//应用所有拦截器的postHandle方法
 				mappedHandler.applyPostHandle(processedRequest, response, mv);
 			}
 			catch (Exception ex) {

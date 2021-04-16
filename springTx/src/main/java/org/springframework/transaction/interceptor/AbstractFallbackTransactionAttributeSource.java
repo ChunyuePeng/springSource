@@ -121,6 +121,8 @@ public abstract class AbstractFallbackTransactionAttributeSource
 		}
 		else {
 			// We need to work it out.
+			//先判断目标方法上有没有@Transatinal注解，如果没有再去判断目标类上有没有该注解，
+			//如果目标方法或目标类上有该注解的话，则解析相关事务信息并封装值TransactionAttribute中
 			TransactionAttribute txAttr = computeTransactionAttribute(method, targetClass);
 			// Put it in the cache.
 			if (txAttr == null) {

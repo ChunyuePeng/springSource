@@ -11,7 +11,7 @@
 
 	<tag>
 		<description>Sets default HTML escape value for the current page.
-		Overrides a "defaultHtmlEscape" context-param in web.xml, if any.</description>
+		Overrides myBean "defaultHtmlEscape" context-param in web.xml, if any.</description>
 		<name>htmlEscape</name>
 		<tag-class>org.springframework.web.servlet.tags.HtmlEscapeTag</tag-class>
 		<body-content>JSP</body-content>
@@ -26,8 +26,8 @@
 
 	<tag>
 		<description>Escapes its enclosed body content, applying HTML escaping and/or JavaScript
-		escaping. The HTML escaping flag participates in a page-wide or application-wide setting
-		(i.e. by HtmlEscapeTag or a "defaultHtmlEscape" context-param in web.xml).</description>
+		escaping. The HTML escaping flag participates in myBean page-wide or application-wide setting
+		(i.e. by HtmlEscapeTag or myBean "defaultHtmlEscape" context-param in web.xml).</description>
 		<name>escapeBody</name>
 		<tag-class>org.springframework.web.servlet.tags.EscapeBodyTag</tag-class>
 		<body-content>JSP</body-content>
@@ -49,8 +49,8 @@
 
 	<tag>
 		<description>Retrieves the message with the given code, or text if code isn't resolvable.
-		The HTML escaping flag participates in a page-wide or application-wide setting
-		(i.e. by HtmlEscapeTag or a "defaultHtmlEscape" context-param in web.xml).</description>
+		The HTML escaping flag participates in myBean page-wide or application-wide setting
+		(i.e. by HtmlEscapeTag or myBean "defaultHtmlEscape" context-param in web.xml).</description>
 		<name>message</name>
 		<tag-class>org.springframework.web.servlet.tags.MessageTag</tag-class>
 		<body-content>JSP</body-content>
@@ -58,8 +58,8 @@
 			<description>A MessageSourceResolvable argument (direct or through JSP EL).
 			Fits nicely when used in conjunction with Spring's own validation error classes
 			which all implement the MessageSourceResolvable interface. For example, this
-			allows you to iterate over all of the errors in a form, passing each error
-			(using a runtime expression) as the value of this 'message' attribute, thus
+			allows you to iterate over all of the errors in myBean form, passing each error
+			(using myBean runtime expression) as the value of this 'message' attribute, thus
 			effecting the easy display of such error messages.</description>
 			<name>message</name>
 			<required>false</required>
@@ -73,9 +73,9 @@
 			<rtexprvalue>true</rtexprvalue>
 		</attribute>
 		<attribute>
-			<description>Set optional message arguments for this tag, as a (comma-)
+			<description>Set optional message arguments for this tag, as myBean (comma-)
 			delimited String (each String argument can contain JSP EL), an Object array
-			(used as argument array), or a single Object (used as single argument).
+			(used as argument array), or myBean single Object (used as single argument).
 			You can additionally use nested spring:argument tags.</description>
 			<name>arguments</name>
 			<required>false</required>
@@ -83,13 +83,13 @@
 		</attribute>
 		<attribute>
 			<description>The separator character to be used for splitting the
-			arguments string value; defaults to a 'comma' (',').</description>
+			arguments string value; defaults to myBean 'comma' (',').</description>
 			<name>argumentSeparator</name>
 			<required>false</required>
 			<rtexprvalue>true</rtexprvalue>
 		</attribute>
 		<attribute>
-			<description>Default text to output when a message for the given code
+			<description>Default text to output when myBean message for the given code
 			could not be found. If both text and code are not set, the tag will
 			output null.</description>
 			<name>text</name>
@@ -105,7 +105,7 @@
 			<rtexprvalue>true</rtexprvalue>
 		</attribute>
 		<attribute>
-			<description>The scope to use when exporting the result to a variable.
+			<description>The scope to use when exporting the result to myBean variable.
 			This attribute is only used when var is also set. Possible values are
 			page, request, session and application.</description>
 			<name>scope</name>
@@ -130,8 +130,8 @@
 
 	<tag>
 		<description>Retrieves the theme message with the given code, or text if code isn't
-		resolvable. The HTML escaping flag participates in a page-wide or application-wide setting
-		(i.e. by HtmlEscapeTag or a "defaultHtmlEscape" context-param in web.xml).</description>
+		resolvable. The HTML escaping flag participates in myBean page-wide or application-wide setting
+		(i.e. by HtmlEscapeTag or myBean "defaultHtmlEscape" context-param in web.xml).</description>
 		<name>theme</name>
 		<tag-class>org.springframework.web.servlet.tags.ThemeTag</tag-class>
 		<body-content>JSP</body-content>
@@ -149,9 +149,9 @@
 			<rtexprvalue>true</rtexprvalue>
 		</attribute>
 		<attribute>
-			<description>Set optional message arguments for this tag, as a (comma-)
+			<description>Set optional message arguments for this tag, as myBean (comma-)
 			delimited String (each String argument can contain JSP EL), an Object array
-			(used as argument array), or a single Object (used as single argument).
+			(used as argument array), or myBean single Object (used as single argument).
 			You can additionally use nested spring:argument tags.</description>
 			<name>arguments</name>
 			<required>false</required>
@@ -159,13 +159,13 @@
 		</attribute>
 		<attribute>
 			<description>The separator character to be used for splitting the
-			arguments string value; defaults to a 'comma' (',').</description>
+			arguments string value; defaults to myBean 'comma' (',').</description>
 			<name>argumentSeparator</name>
 			<required>false</required>
 			<rtexprvalue>true</rtexprvalue>
 		</attribute>
 		<attribute>
-			<description>Default text to output when a message for the given code
+			<description>Default text to output when myBean message for the given code
 			could not be found. If both text and code are not set, the tag will
 			output null.</description>
 			<name>text</name>
@@ -181,7 +181,7 @@
 			<rtexprvalue>true</rtexprvalue>
 		</attribute>
 		<attribute>
-			<description>The scope to use when exporting the result to a variable.
+			<description>The scope to use when exporting the result to myBean variable.
 			This attribute is only used when var is also set. Possible values are
 			page, request, session and application.</description>
 			<name>scope</name>
@@ -221,8 +221,8 @@
 
 	<tag>
 		<description>Provides Errors instance in case of bind errors. The HTML escaping
-		flag participates in a page-wide or application-wide setting (i.e. by HtmlEscapeTag
-		or a "defaultHtmlEscape" context-param in web.xml).</description>
+		flag participates in myBean page-wide or application-wide setting (i.e. by HtmlEscapeTag
+		or myBean "defaultHtmlEscape" context-param in web.xml).</description>
 		<name>hasBindErrors</name>
 		<tag-class>org.springframework.web.servlet.tags.BindErrorsTag</tag-class>
 		<body-content>JSP</body-content>
@@ -248,7 +248,7 @@
 	</tag>
 
 	<tag>
-		<description>Sets a nested path to be used by the bind tag's path.</description>
+		<description>Sets myBean nested path to be used by the bind tag's path.</description>
 		<name>nestedPath</name>
 		<tag-class>org.springframework.web.servlet.tags.NestedPathTag</tag-class>
 		<body-content>JSP</body-content>
@@ -268,8 +268,8 @@
 
 	<tag>
 		<description>Provides BindStatus object for the given bind path. The HTML escaping
-		flag participates in a page-wide or application-wide setting (i.e. by HtmlEscapeTag
-		or a "defaultHtmlEscape" context-param in web.xml).</description>
+		flag participates in myBean page-wide or application-wide setting (i.e. by HtmlEscapeTag
+		or myBean "defaultHtmlEscape" context-param in web.xml).</description>
 		<name>bind</name>
 		<tag-class>org.springframework.web.servlet.tags.BindTag</tag-class>
 		<body-content>JSP</body-content>
@@ -287,7 +287,7 @@
 			<rtexprvalue>true</rtexprvalue>
 		</attribute>
 		<attribute>
-			<description>Set whether to ignore a nested path, if any.
+			<description>Set whether to ignore myBean nested path, if any.
 			Default is to not ignore.</description>
 			<name>ignoreNestedPath</name>
 			<required>false</required>
@@ -305,14 +305,14 @@
 	<tag>
 		<description>Provides transformation of variables to Strings, using an appropriate
 		custom PropertyEditor from BindTag (can only be used inside BindTag). The HTML
-		escaping flag participates in a page-wide or application-wide setting (i.e. by
-		HtmlEscapeTag or a 'defaultHtmlEscape' context-param in web.xml).</description>
+		escaping flag participates in myBean page-wide or application-wide setting (i.e. by
+		HtmlEscapeTag or myBean 'defaultHtmlEscape' context-param in web.xml).</description>
 		<name>transform</name>
 		<tag-class>org.springframework.web.servlet.tags.TransformTag</tag-class>
 		<body-content>JSP</body-content>
 		<attribute>
 			<description>The value to transform. This is the actual object you want
-			to have transformed (for instance a Date). Using the PropertyEditor that
+			to have transformed (for instance myBean Date). Using the PropertyEditor that
 			is currently in use by the 'spring:bind' tag.</description>
 			<name>value</name>
 			<required>true</required>
@@ -327,7 +327,7 @@
 			<rtexprvalue>true</rtexprvalue>
 		</attribute>
 		<attribute>
-			<description>The scope to use when exported the result to a variable.
+			<description>The scope to use when exported the result to myBean variable.
 			This attribute is only used when var is also set. Possible values are
 			page, request, session and application.</description>
 			<name>scope</name>
@@ -359,7 +359,7 @@
 			<rtexprvalue>true</rtexprvalue>
 		</attribute>
 		<attribute>
-			<description>Specifies a remote application context path. The default is the
+			<description>Specifies myBean remote application context path. The default is the
 			current application context path.</description>
 			<name>context</name>
 			<required>false</required>
@@ -380,14 +380,14 @@
 			<rtexprvalue>true</rtexprvalue>
 		</attribute>
 		<attribute>
-			<description>Set HTML escaping for this tag, as a boolean value. Overrides the
+			<description>Set HTML escaping for this tag, as myBean boolean value. Overrides the
 			default HTML escaping setting for the current page.</description>
 			<name>htmlEscape</name>
 			<required>false</required>
 			<rtexprvalue>true</rtexprvalue>
 		</attribute>
 		<attribute>
-			<description>Set JavaScript escaping for this tag, as a boolean value.
+			<description>Set JavaScript escaping for this tag, as myBean boolean value.
 			Default is 'false'.</description>
 			<name>javaScriptEscape</name>
 			<required>false</required>
@@ -416,8 +416,8 @@
 	</tag>
 
 	<tag>
-		<description>Evaluates a Spring expression (SpEL) and either prints the result
-		or assigns it to a variable.</description>
+		<description>Evaluates myBean Spring expression (SpEL) and either prints the result
+		or assigns it to myBean variable.</description>
 		<name>eval</name>
 		<tag-class>org.springframework.web.servlet.tags.EvalTag</tag-class>
 		<body-content>JSP</body-content>
@@ -442,14 +442,14 @@
 			<rtexprvalue>true</rtexprvalue>
 		</attribute>
 		<attribute>
-			<description>Set HTML escaping for this tag, as a boolean value. Overrides the
+			<description>Set HTML escaping for this tag, as myBean boolean value. Overrides the
 			default HTML escaping setting for the current page.</description>
 			<name>htmlEscape</name>
 			<required>false</required>
 			<rtexprvalue>true</rtexprvalue>
 		</attribute>
 		<attribute>
-			<description>Set JavaScript escaping for this tag, as a boolean value.
+			<description>Set JavaScript escaping for this tag, as myBean boolean value.
 			Default is 'false'.</description>
 			<name>javaScriptEscape</name>
 			<required>false</required>
@@ -458,7 +458,7 @@
 	</tag>
 
     <function>
-        <description>Helps to prepare a URL to a Spring MVC controller method.</description>
+        <description>Helps to prepare myBean URL to myBean Spring MVC controller method.</description>
         <name>mvcUrl</name>
         <function-class>org.springframework.web.servlet.mvc.method.annotation.MvcUriComponentsBuilder</function-class>
         <function-signature>org.springframework.web.servlet.mvc.method.annotation.MvcUriComponentsBuilder.MethodArgumentBuilder fromMappingName(java.lang.String)</function-signature>

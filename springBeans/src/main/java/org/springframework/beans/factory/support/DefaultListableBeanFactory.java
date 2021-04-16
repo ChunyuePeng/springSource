@@ -918,22 +918,15 @@ public class DefaultListableBeanFactory extends AbstractAutowireCapableBeanFacto
 		List<String> beanNames = new ArrayList<>(this.beanDefinitionNames);
 
 		// Trigger initialization of all non-lazy singleton beans...
-		/*xxx: 所有不是lazy-init的单例，都会在这里进行实例化*/
-		/*xxx: 这里的代码经过 编译优化后，会成为一个 需要维护 7层的循环*/
-
-		/*xxx: 遍历所有的bean名称 */
 		for (String beanName : beanNames) {
 			RootBeanDefinition bd = getMergedLocalBeanDefinition(beanName);
-			/*xxx: 如果被遍历的元素bean，不是抽象的，并且是单例，同时不是 lazyInit的时候*/
+			//如果被遍历的元素bean,不是抽象的，并且是单例，同时不是lazyInit的时候
 			if (!bd.isAbstract() && bd.isSingleton() && !bd.isLazyInit()) {
-				/*xxx: 如果是工厂bean，通过getObject获取实际的bean*/
+				//如果是工厂bean，通过getObject获取实际的bean
 				if (isFactoryBean(beanName)) {
-					/*xxx: 如果是工厂bean,则先将该工厂bean拿到，工厂bean的名称 为&+ bean的名称*/
+					//如果是工厂bean,则先将该工厂bean拿到，工厂bean的名称为&+ bean的名称
 					Object bean = getBean(FACTORY_BEAN_PREFIX + beanName);
-					/*xxx: 拿到工厂bean后，进一步验证确保代码稳健*/
 					if (bean instanceof FactoryBean) {
-						/*xxx: 强转为 FactoryBean,这个在多层级抽象体系里特别重要，
-						   在强转之前，前面通常有一个instanceof操作符，确保稳健性*/
 						FactoryBean<?> factory = (FactoryBean<?>) bean;
 						boolean isEagerInit;
 						if (System.getSecurityManager() != null && factory instanceof SmartFactoryBean) {
@@ -942,14 +935,14 @@ public class DefaultListableBeanFactory extends AbstractAutowireCapableBeanFacto
 									getAccessControlContext());
 						}
 						else {
-							/*xxx: 当该工厂bean为智能工厂bean，同时它的属性为 eagerInit时，才能进行进行 实例化*/
+							//当该工厂bean为智能工厂bean，同时它的属性为 eagerInit时，才能进行进行实例化
 							isEagerInit = (factory instanceof SmartFactoryBean &&
 									((SmartFactoryBean<?>) factory).isEagerInit());
 						}
 						if (isEagerInit) {
 							getBean(beanName);
 						}
-						/*xxx: 否则，则只实例化 工厂bean，而不获取实际的bean*/
+						//否则，则只实例化 工厂bean，而不获取实际的bean
 					}
 				}
 				else {
@@ -960,11 +953,10 @@ public class DefaultListableBeanFactory extends AbstractAutowireCapableBeanFacto
 		}
 
 		// Trigger post-initialization callback for all applicable beans...
-		/*xxx: 触发所有的后置实例化回调为所有匹配的bean*/
+		//触发所有的后置实例化回调为所有匹配的bean
 		for (String beanName : beanNames) {
 			Object singletonInstance = getSingleton(beanName);
-			/*xxx: 对所有单例，进行实例化后置检测*/
-			/*xxx: 当该单例为 智能实例化单例时*/
+			//对所有单例，进行实例化后置检测，当该单例为 智能实例化单例时
 			if (singletonInstance instanceof SmartInitializingSingleton) {
 				StartupStep smartInitialize = this.getApplicationStartup().start("spring.beans.smart-initialize")
 						.tag("beanName", beanName);
@@ -976,7 +968,7 @@ public class DefaultListableBeanFactory extends AbstractAutowireCapableBeanFacto
 					}, getAccessControlContext());
 				}
 				else {
-					/*xxx: 则对这个单例调用，实例化后置回调，只针对单例进行处理*/
+					//则对这个单例调用，实例化后置回调，只针对单例进行处理
 					smartSingleton.afterSingletonsInstantiated();
 				}
 				smartInitialize.end();

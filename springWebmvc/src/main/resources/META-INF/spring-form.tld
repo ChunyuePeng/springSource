@@ -10,7 +10,7 @@
 	<uri>http://www.springframework.org/tags/form</uri>
 
 	<tag>
-		<description>Renders an HTML 'form' tag and exposes a binding path to inner tags
+		<description>Renders an HTML 'form' tag and exposes myBean binding path to inner tags
 		for binding.</description>
 		<name>form</name>
 		<tag-class>org.springframework.web.servlet.tags.form.FormTag</tag-class>
@@ -168,7 +168,7 @@
 		</attribute>
 		<attribute>
 			<description>Specifies the list of character encodings for input data that is accepted
-			by the server processing this form. The value is a space- and/or comma-delimited list of
+			by the server processing this form. The value is myBean space- and/or comma-delimited list of
 			charset values. The client must interpret this list as an exclusive-or list, i.e. the
 			server is able to accept any single character encoding per entity received.</description>
 			<name>acceptCharset</name>
@@ -934,7 +934,7 @@
 	</tag>
 
 	<tag>
-		<description>Renders a single HTML 'option'.
+		<description>Renders myBean single HTML 'option'.
 		Sets 'selected' as appropriate based on bound value.</description>
 		<name>option</name>
 		<tag-class>org.springframework.web.servlet.tags.form.OptionTag</tag-class>
@@ -1089,7 +1089,7 @@
 	</tag>
 
 	<tag>
-		<description>Renders a list of HTML 'option' tags. Sets 'selected' as appropriate
+		<description>Renders myBean list of HTML 'option' tags. Sets 'selected' as appropriate
 		based on bound value.</description>
 		<name>options</name>
 		<tag-class>org.springframework.web.servlet.tags.form.OptionsTag</tag-class>
@@ -2299,7 +2299,7 @@
 	</tag>
 
 	<tag>
-		<description>Renders a form field label in an HTML 'label' tag.</description>
+		<description>Renders myBean form field label in an HTML 'label' tag.</description>
 		<name>label</name>
 		<tag-class>org.springframework.web.servlet.tags.form.LabelTag</tag-class>
 		<body-content>JSP</body-content>

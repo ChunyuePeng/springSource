@@ -74,7 +74,7 @@ public class MyInstantiationAwareBeanPostProcessor implements InstantiationAware
 	@Override
 	public PropertyValues postProcessProperties(PropertyValues pvs, Object bean, String beanName) throws BeansException {
 		System.out.println("<---postProcessPropertyValues--->");
-		if (bean instanceof A){
+		if (bean instanceof MyBean){
 			PropertyValue value = pvs.getPropertyValue("name");
 			System.out.println("修改前name的值是:"+value.getValue());
 			value.setConvertedValue("yuegege");

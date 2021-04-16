@@ -146,20 +146,21 @@ public abstract class HttpServletBean extends HttpServlet implements Environment
 	 * properties are missing), or if subclass initialization fails.
 	 */
 	@Override
-	/*xxx: 在服务器容器启动后，将会自动初始化 (init-param 设置为非负数，或者没设 在context完成后，会自动执行初始化)*/
 	public final void init() throws ServletException {
 
 		// Set bean properties from init parameters.
-		/*xxx: 将 servlet 中配置的参数 封装到 pvs 变量中，  requiredProperties 为 必需参数，如果没配置，将报异常*/
+		/*xxx: 将servlet中配置的参数封装到pvs变量中，requiredProperties为必需参数,如果没配置，将报异常*/
 		PropertyValues pvs = new ServletConfigPropertyValues(getServletConfig(), this.requiredProperties);
 		if (!pvs.isEmpty()) {
 			try {
+				//将当前的这个servlet类转化为一个BeanWrapper，从而能够以Spring的方式来对init-param的值进行注入
 				BeanWrapper bw = PropertyAccessorFactory.forBeanPropertyAccess(this);
 				ResourceLoader resourceLoader = new ServletContextResourceLoader(getServletContext());
+				//注册自定义属性编辑器，一旦遇到Resource类型的属性将会使用ResourceEditor进行解析
 				bw.registerCustomEditor(Resource.class, new ResourceEditor(resourceLoader, getEnvironment()));
-				/*xxx: 模板方法，可以在子类调用，做一些初始化工作， bw代表 DispatcherServlet*/
+				//空实现留给子类扩展
 				initBeanWrapper(bw);
-				/*xxx: 将配置的 初始值，(如 contextConfigLocation) 设置到  DispatcherServlet*/
+				//属性注入
 				bw.setPropertyValues(pvs, true);
 			}
 			catch (BeansException ex) {
@@ -171,7 +172,7 @@ public abstract class HttpServletBean extends HttpServlet implements Environment
 		}
 
 		// Let subclasses do whatever initialization they like.
-		/*xxx: 模板方法，子类初始化的入口方法*/
+		//留给子类扩展
 		initServletBean();
 	}
 
@@ -214,6 +215,7 @@ public abstract class HttpServletBean extends HttpServlet implements Environment
 	private static class ServletConfigPropertyValues extends MutablePropertyValues {
 
 		/**
+		 * 封装属性值及对属性进行验证
 		 * Create new ServletConfigPropertyValues.
 		 * @param config the ServletConfig we'll use to take PropertyValues from
 		 * @param requiredProperties set of property names we need, where
@@ -237,6 +239,7 @@ public abstract class HttpServletBean extends HttpServlet implements Environment
 			}
 
 			// Fail if we are still missing properties.
+			//如果requiredProperties中的属性没有指定初始值则抛出异常
 			if (!CollectionUtils.isEmpty(missingProps)) {
 				throw new ServletException(
 						"Initialization from ServletConfig for servlet '" + config.getServletName() +

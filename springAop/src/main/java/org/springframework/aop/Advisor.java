@@ -19,8 +19,8 @@ package org.springframework.aop;
 import org.aopalliance.aop.Advice;
 
 /**
- * Advisor其实就是Pointcut与Advice的组合，Advice时执行的方法，而要知道方法是否需要执行
- * 则需要Pointcut，因此诞生了Advisor。打个比方：Advice表示建议，Pointcut表示建议的地点
+ * Advisor其实就是Pointcut与Advice的组合，Advice是需要执行的方法，而要知道方法是否需要执行
+ * 则需要Pointcut，因此诞生了Advisor。打个比方：Advice表示建议，Pointcut表示建议去哪执行
  * ，Advisor表示建议者（它知道去哪执行，且知道是什么建议）。
  *
  *持有AOP advice（在连接点上采取的动作）的基本接口以及确定advice实用性的过滤器

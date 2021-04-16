@@ -165,6 +165,7 @@ public abstract class AsyncExecutionAspectSupport implements BeanFactoryAware {
 		if (executor == null) {
 			Executor targetExecutor;
 			String qualifier = getExecutorQualifier(method);
+			//如果用户定义了Executor则使用用户自定义的，用户没有定义则使用默认的Executor
 			if (StringUtils.hasLength(qualifier)) {
 				targetExecutor = findQualifiedExecutor(this.beanFactory, qualifier);
 			}
@@ -305,9 +306,11 @@ public abstract class AsyncExecutionAspectSupport implements BeanFactoryAware {
 	 * @param params the parameters used to invoke the method
 	 */
 	public void handleError(Throwable ex, Method method, Object... params) throws Exception {
+		//返回值类型为Future
 		if (Future.class.isAssignableFrom(method.getReturnType())) {
 			ReflectionUtils.rethrowException(ex);
 		}
+		//返回值类型为非Future
 		else {
 			// Could not transmit the exception to the caller with default executor
 			try {

@@ -530,7 +530,7 @@ public abstract class FrameworkServlet extends HttpServletBean implements Applic
 		try {
 			/*xxx: 初始化 WebApplicationContext*/
 			this.webApplicationContext = initWebApplicationContext();
-			/*xxx: 初始化 FrameworkServlet*/
+			//设计为子类实现
 			initFrameworkServlet();
 		}
 		catch (ServletException | RuntimeException ex) {
@@ -679,6 +679,7 @@ public abstract class FrameworkServlet extends HttpServletBean implements Applic
 		if (configLocation != null) {
 			wac.setConfigLocation(configLocation);
 		}
+		//初始化Spring环境包括加载配置文件等
 		configureAndRefreshWebApplicationContext(wac);
 
 		return wac;
@@ -714,6 +715,7 @@ public abstract class FrameworkServlet extends HttpServletBean implements Applic
 
 		postProcessWebApplicationContext(wac);
 		applyInitializers(wac);
+		//加载配置文件及整合parent到wac
 		wac.refresh();
 	}
 

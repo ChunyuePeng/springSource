@@ -11,7 +11,7 @@
 		<xsd:documentation><![CDATA[
 	Defines the elements used in the Spring Framework's dynamic language
 	support, which allows bean definitions that are backed by classes
-	written in a language other than Java.
+	written in myBean language other than Java.
 		]]></xsd:documentation>
 	</xsd:annotation>
 
@@ -32,7 +32,7 @@
 	<xsd:element name="groovy">
 		<xsd:annotation>
 			<xsd:documentation><![CDATA[
-	A Spring bean backed by a Groovy class definition.
+	A Spring bean backed by myBean Groovy class definition.
 			]]></xsd:documentation>
 		</xsd:annotation>
 		<xsd:complexType>
@@ -47,7 +47,7 @@
 	<xsd:element name="bsh">
 		<xsd:annotation>
 			<xsd:documentation><![CDATA[
-	A Spring bean backed by a BeanShell script.
+	A Spring bean backed by myBean BeanShell script.
 			]]></xsd:documentation>
 		</xsd:annotation>
 		<xsd:complexType>
@@ -62,7 +62,7 @@
 	<xsd:element name="std">
 		<xsd:annotation>
 			<xsd:documentation><![CDATA[
-	A Spring bean backed by a standard JSR-223 based script.
+	A Spring bean backed by myBean standard JSR-223 based script.
 	Supports JavaScript, Groovy, JRuby and other JSR-223 compliant engines.
 			]]></xsd:documentation>
 		</xsd:annotation>
@@ -131,7 +131,7 @@
 
 	Singletons are most commonly used, and are ideal for multi-threaded
 	service objects. Further scopes, such as "request" or "session", might
-	be supported by extended bean factories (e.g. in a web environment).
+	be supported by extended bean factories (e.g. in myBean web environment).
 						]]></xsd:documentation>
 					</xsd:annotation>
 				</xsd:attribute>
@@ -139,7 +139,7 @@
 					<xsd:annotation>
 						<xsd:documentation><![CDATA[
 	The autowire mode for the scripted bean.
-	Analogous to the 'autowire' attribute on a standard bean definition.
+	Analogous to the 'autowire' attribute on myBean standard bean definition.
 						]]></xsd:documentation>
 					</xsd:annotation>
 					<xsd:simpleType>
@@ -168,15 +168,15 @@
 					<xsd:annotation>
 						<xsd:documentation><![CDATA[
 	The name of an initialization method defined on the scripted bean.
-	Analogous to the 'init-method' attribute on a standard bean definition.
+	Analogous to the 'init-method' attribute on myBean standard bean definition.
 						]]></xsd:documentation>
 					</xsd:annotation>
 				</xsd:attribute>
 				<xsd:attribute name="destroy-method" type="xsd:string">
 					<xsd:annotation>
 						<xsd:documentation><![CDATA[
-	The name of a destruction method defined on the scripted bean.
-	Analogous to the 'destroy-method' attribute on a standard bean definition.
+	The name of myBean destruction method defined on the scripted bean.
+	Analogous to the 'destroy-method' attribute on myBean standard bean definition.
 						]]></xsd:documentation>
 					</xsd:annotation>
 				</xsd:attribute>
@@ -204,7 +204,7 @@
 				<xsd:attribute name="customizer-ref">
 					<xsd:annotation>
 						<xsd:documentation><![CDATA[
-	Reference to a GroovyObjectCustomizer or similar customizer bean.
+	Reference to myBean GroovyObjectCustomizer or similar customizer bean.
 						]]></xsd:documentation>
 					</xsd:annotation>
 				</xsd:attribute>

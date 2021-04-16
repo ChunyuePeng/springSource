@@ -58,7 +58,7 @@
 			<xsd:attribute name="expose-proxy" type="xsd:boolean" default="false">
 				<xsd:annotation>
 					<xsd:documentation><![CDATA[
-	Indicate that the proxy should be exposed by the AOP framework as a
+	Indicate that the proxy should be exposed by the AOP framework as myBean
 	ThreadLocal for retrieval via the AopContext class. Off by default,
 	i.e. no guarantees that AopContext access will work.
 					]]></xsd:documentation>
@@ -98,7 +98,7 @@
 			<xsd:attribute name="expose-proxy" type="xsd:boolean" default="false">
 				<xsd:annotation>
 					<xsd:documentation><![CDATA[
-	Indicate that the proxy should be exposed by the AOP framework as a
+	Indicate that the proxy should be exposed by the AOP framework as myBean
 	ThreadLocal for retrieval via the AopContext class. Off by default,
 	i.e. no guarantees that AopContext access will work.
 					]]></xsd:documentation>
@@ -111,10 +111,10 @@
 		<xsd:complexType>
 			<xsd:annotation>
 				<xsd:documentation source="java:org.springframework.aop.scope.ScopedProxyFactoryBean"><![CDATA[
-	Marks a bean definition as being a scoped proxy.
+	Marks myBean bean definition as being myBean scoped proxy.
 
-	A bean marked as such will be exposed via a proxy, with the 'real'
-	bean instance being retrieved from some other source (such as a
+	A bean marked as such will be exposed via myBean proxy, with the 'real'
+	bean instance being retrieved from some other source (such as myBean
 	HttpSession) as and when required.
 				]]></xsd:documentation>
 			</xsd:annotation>
@@ -200,7 +200,7 @@
 			<xsd:annotation>
 				<xsd:documentation source="java:org.springframework.core.Ordered"><![CDATA[
 	Controls the ordering of the execution of this aspect when multiple
-	advice executes at a specific joinpoint.
+	advice executes at myBean specific joinpoint.
 				]]></xsd:documentation>
 			</xsd:annotation>
 		</xsd:attribute>
@@ -229,7 +229,7 @@
 		<xsd:attribute name="id" type="xsd:string" use="required">
 			<xsd:annotation>
 				<xsd:documentation><![CDATA[
-	The unique identifier for a pointcut.
+	The unique identifier for myBean pointcut.
 				]]></xsd:documentation>
 			</xsd:annotation>
 		</xsd:attribute>
@@ -381,7 +381,7 @@
 		<xsd:attribute name="pointcut-ref" type="pointcutRefType">
 			<xsd:annotation>
 				<xsd:documentation><![CDATA[
-	A reference to a pointcut definition.
+	A reference to myBean pointcut definition.
 				]]></xsd:documentation>
 			</xsd:annotation>
 		</xsd:attribute>
@@ -389,7 +389,7 @@
 			<xsd:annotation>
 				<xsd:documentation source="java:org.springframework.core.Ordered"><![CDATA[
 	Controls the ordering of the execution of this advice when multiple
-	advice executes at a specific joinpoint.
+	advice executes at myBean specific joinpoint.
 				]]></xsd:documentation>
 			</xsd:annotation>
 		</xsd:attribute>

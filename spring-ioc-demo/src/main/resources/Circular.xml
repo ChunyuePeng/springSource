@@ -3,11 +3,10 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
        http://www.springframework.org/schema/beans/spring-beans.xsd">
-    <bean name="c1" class="com.pcy.circular.Class1" init-method="init">
-        <property name="c2" ref="c2" />
+    <bean name="a" class="com.pcy.circular.A" init-method="init">
+        <property name="b" ref="b" />
     </bean>
-    <bean name="c2" class="com.pcy.circular.Class2" init-method="init">
-        <property name="c1" ref="c1"/>
+    <bean name="b" class="com.pcy.circular.B" init-method="init">
+        <property name="a" ref="a"/>
     </bean>
-
 </beans>

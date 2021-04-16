@@ -21,7 +21,7 @@
 	<xsd:element name="jndi-lookup">
 		<xsd:annotation>
 			<xsd:documentation source="java:org.springframework.jndi.JndiObjectFactoryBean"><![CDATA[
-	Exposes an object reference via a JNDI lookup.
+	Exposes an object reference via myBean JNDI lookup.
 			]]></xsd:documentation>
 		</xsd:annotation>
 		<xsd:complexType>
@@ -57,7 +57,7 @@
 	The proxy interface to use for the JNDI object.
 
 	Needs to be specified because the actual JNDI object type is not
-	known in advance in case of a lazy lookup.
+	known in advance in case of myBean lazy lookup.
 
 	Typically used in conjunction with "lookupOnStartup"=false and/or
 	"cache"=false.
@@ -72,7 +72,7 @@
 					<xsd:attribute name="default-value" type="xsd:string">
 						<xsd:annotation>
 							<xsd:documentation><![CDATA[
-	Specify a default literal value to fall back to if the JNDI lookup fails.
+	Specify myBean default literal value to fall back to if the JNDI lookup fails.
 	This is typically used for literal values in scenarios where the JNDI environment
 	might define specific config settings but those are not required to be present.
 
@@ -83,8 +83,8 @@
 					<xsd:attribute name="default-ref" type="xsd:string">
 						<xsd:annotation>
 							<xsd:documentation><![CDATA[
-	Specify a default bean reference to fall back to if the JNDI lookup fails.
-	This might for example point to a local fallback DataSource.
+	Specify myBean default bean reference to fall back to if the JNDI lookup fails.
+	This might for example point to myBean local fallback DataSource.
 
 	Default is none. Note: This is only supported for lookup on startup.
 							]]></xsd:documentation>
@@ -98,7 +98,7 @@
 	<xsd:element name="local-slsb" type="ejbType">
 		<xsd:annotation>
 			<xsd:documentation source="java:org.springframework.ejb.access.LocalStatelessSessionProxyFactoryBean"><![CDATA[
-	Exposes a reference to a local EJB Stateless SessionBean.
+	Exposes myBean reference to myBean local EJB Stateless SessionBean.
 			]]></xsd:documentation>
 		</xsd:annotation>
 	</xsd:element>
@@ -106,7 +106,7 @@
 	<xsd:element name="remote-slsb">
 		<xsd:annotation>
 			<xsd:documentation source="java:org.springframework.ejb.access.SimpleRemoteStatelessSessionProxyFactoryBean"><![CDATA[
-	Exposes a reference to a remote EJB Stateless SessionBean.
+	Exposes myBean reference to myBean remote EJB Stateless SessionBean.
 			]]></xsd:documentation>
 		</xsd:annotation>
 		<xsd:complexType>
@@ -127,8 +127,8 @@
 	Controls whether to refresh the EJB home on connect failure.
 
 	Can be turned on to allow for hot restart of the EJB server.
-	If a cached EJB home throws an RMI exception that indicates a
-	remote connect failure, a fresh home will be fetched and the
+	If myBean cached EJB home throws an RMI exception that indicates myBean
+	remote connect failure, myBean fresh home will be fetched and the
 	invocation will be retried.
 							]]></xsd:documentation>
 						</xsd:annotation>
@@ -169,7 +169,7 @@
 				<xsd:attribute name="environment-ref" type="environmentRefType">
 					<xsd:annotation>
 						<xsd:documentation><![CDATA[
-	A reference to JNDI environment properties, indicating the name of a
+	A reference to JNDI environment properties, indicating the name of myBean
 	shared bean of type [java.util.Properties}.
 						]]></xsd:documentation>
 					</xsd:annotation>
@@ -177,8 +177,8 @@
 				<xsd:attribute name="jndi-name" type="xsd:string" use="required">
 					<xsd:annotation>
 						<xsd:documentation><![CDATA[
-	The JNDI name to look up. This may be a fully-qualified JNDI path
-	or a local Java EE environment naming context path in which case the
+	The JNDI name to look up. This may be myBean fully-qualified JNDI path
+	or myBean local Java EE environment naming context path in which case the
 	prefix "java:comp/env/" will be prepended if applicable.
 						]]></xsd:documentation>
 					</xsd:annotation>
@@ -186,7 +186,7 @@
 				<xsd:attribute name="resource-ref" type="xsd:boolean" default="true">
 					<xsd:annotation>
 						<xsd:documentation><![CDATA[
-	Controls whether the lookup occurs in a Java EE container, i.e. if the
+	Controls whether the lookup occurs in myBean Java EE container, i.e. if the
 	prefix "java:comp/env/" needs to be added if the JNDI name doesn't
 	already contain it. Default is "true" (since Spring 2.5).
 						]]></xsd:documentation>

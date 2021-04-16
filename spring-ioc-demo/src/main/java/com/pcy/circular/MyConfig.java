@@ -9,11 +9,11 @@ import org.springframework.context.annotation.Bean;
  */
 public class MyConfig {
     @Bean
-    public Class1 c1(){
-        return new Class1();
+    public A c1(){
+        return new A();
     }
     @Bean
-    public Class2 cw(){
-        return new Class2();
+    public B cw(){
+        return new B();
     }
 }

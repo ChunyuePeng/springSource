@@ -10,6 +10,6 @@ import com.pcy.service.Person;
 public class Student implements Person {
     @Override
     public void say() {
-        System.out.println("这是一个苦逼程序员");
+        System.out.println("这是一个快乐程序员");
     }
 }

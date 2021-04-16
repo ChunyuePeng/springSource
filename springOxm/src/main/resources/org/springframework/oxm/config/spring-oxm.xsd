@@ -19,7 +19,7 @@
 		<xsd:complexType>
 			<xsd:annotation>
 				<xsd:documentation source="java:org.springframework.oxm.jaxb.Jaxb2Marshaller">
-					Defines a JAXB2 Marshaller.
+					Defines myBean JAXB2 Marshaller.
 				</xsd:documentation>
 				<xsd:appinfo>
 					<tool:annotation>
@@ -50,7 +50,7 @@
 		<xsd:complexType>
 			<xsd:annotation>
 				<xsd:documentation source="java:org.springframework.oxm.jibx.JibxMarshaller">
-					Defines a JiBX Marshaller. Deprecated as of Spring Framework 5.1.5!
+					Defines myBean JiBX Marshaller. Deprecated as of Spring Framework 5.1.5!
 				</xsd:documentation>
 				<xsd:appinfo>
 					<tool:annotation>
@@ -82,7 +82,7 @@
 
 	<xsd:simpleType name="classType">
 		<xsd:annotation>
-			<xsd:documentation source="java:java.lang.Class">A class supported by a marshaller.</xsd:documentation>
+			<xsd:documentation source="java:java.lang.Class">A class supported by myBean marshaller.</xsd:documentation>
 			<xsd:appinfo>
 				<tool:annotation kind="direct">
 					<tool:expected-type type="java.lang.Class"/>

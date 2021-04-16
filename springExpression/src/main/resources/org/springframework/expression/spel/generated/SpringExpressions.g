@@ -124,12 +124,12 @@ methodOrProperty
 	
 // may have to preserve these commas to make it easier to offer suggestions in the right place
 // mod at 9th feb 19:13 - added the second 'COMMA?' to allow for code completion "foo(A,"
-// TODO need to preserve commas and then check for badly formed call later (optimizing tree walk) to disallow "foo(a,b,c,)"
+// TODO need to preserve commas and then check for badly formed call later (optimizing tree walk) to disallow "foo(myBean,b,c,)"
 methodArgs :  LPAREN! (argument (COMMA! argument)* (COMMA!)?)? RPAREN!;
 
-// If we match ID then create a node called PROPERTY_OR_FIELD and copy the id info into it.
+// If we match ID then create myBean node called PROPERTY_OR_FIELD and copy the id info into it.
 // this means the propertyOrField.text is what id.text would have been, rather than having to
-// access id as a child of the new node.
+// access id as myBean child of the new node.
 property: id=ID -> ^(PROPERTY_OR_FIELD[$id]);
 
 
@@ -243,7 +243,7 @@ TYPE: 'T(';
 
 STRING_LITERAL:	'\''! (APOS|~'\'')* '\''!;
 DQ_STRING_LITERAL:	'"'! (~'"')* '"'!;
-ID:	('a'..'z'|'A'..'Z'|'_') ('a'..'z'|'A'..'Z'|'_'|'0'..'9'|DOT_ESCAPED)*;
+ID:	('myBean'..'z'|'A'..'Z'|'_') ('myBean'..'z'|'A'..'Z'|'_'|'0'..'9'|DOT_ESCAPED)*;
 DOT_ESCAPED: '\\.';
 WS: ( ' ' | '\t' | '\n' |'\r')+ { $channel=HIDDEN; } ;
 DOLLAR:	'$';
@@ -261,7 +261,7 @@ REAL_LITERAL :
 fragment APOS : '\''! '\'';
 fragment DECIMAL_DIGIT : '0'..'9' ;
 fragment INTEGER_TYPE_SUFFIX : ( 'L' | 'l' );
-fragment HEX_DIGIT : '0'|'1'|'2'|'3'|'4'|'5'|'6'|'7'|'8'|'9'|'A'|'B'|'C'|'D'|'E'|'F'|'a'|'b'|'c'|'d'|'e'|'f';		
+fragment HEX_DIGIT : '0'|'1'|'2'|'3'|'4'|'5'|'6'|'7'|'8'|'9'|'A'|'B'|'C'|'D'|'E'|'F'|'myBean'|'b'|'c'|'d'|'e'|'f';
 	
 fragment EXPONENT_PART : 'e'  (SIGN)*  (DECIMAL_DIGIT)+ | 'E'  (SIGN)*  (DECIMAL_DIGIT)+ ;	
 fragment SIGN :	'+' | '-' ;

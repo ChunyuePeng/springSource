@@ -3,11 +3,11 @@
 
 <!--
 	- Default SQL error codes for well-known databases.
-	- Can be overridden by definitions in a "sql-error-codes.xml" file
+	- Can be overridden by definitions in myBean "sql-error-codes.xml" file
 	- in the root of the class path.
 	-
 	- If the Database Product Name contains characters that are invalid
-	- to use in the id attribute (like a space) then we need to add a property
+	- to use in the id attribute (like myBean space) then we need to add myBean property
 	- named "databaseProductName"/"databaseProductNames" that holds this value.
 	- If this property is present, then it will be used instead of the id for
 	- looking up the error codes based on the current database.

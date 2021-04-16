@@ -47,8 +47,10 @@ public class AsyncConfigurationSelector extends AdviceModeImportSelector<EnableA
 	public String[] selectImports(AdviceMode adviceMode) {
 		switch (adviceMode) {
 			case PROXY:
+				//动态代理
 				return new String[] {ProxyAsyncConfiguration.class.getName()};
 			case ASPECTJ:
+				//静态代理
 				return new String[] {ASYNC_EXECUTION_ASPECT_CONFIGURATION_CLASS_NAME};
 			default:
 				return null;

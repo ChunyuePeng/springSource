@@ -6,7 +6,29 @@
         http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
         http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
 
+    <!--    配置方式1-->
     <aop:aspectj-autoproxy/>
-    <bean id="student" class="com.pcy.service.impl.Student"/>
     <bean class="com.pcy.AspectJTest"/>
+    <bean id="student" class="com.pcy.service.impl.Student"/>
+
+    <!--    配置方式2-->
+<!--    <bean id="printTimeService" class="com.pcy.service.impl.PrintTimeServiceImpl"/>-->
+<!--    <aop:config>-->
+<!--        <aop:aspect id="time" ref="printTimeService">-->
+<!--            <aop:pointcut id="addAllMethod" expression="execution(* *.say(..))"/>-->
+<!--            <aop:before method="printTime" pointcut-ref="addAllMethod"/>-->
+<!--            <aop:after method="printTime" pointcut-ref="addAllMethod"/>-->
+<!--        </aop:aspect>-->
+<!--    </aop:config>-->
+
+    <!-- 配置方式3-->
+<!--    <aop:config>-->
+<!--        <aop:pointcut id="point" expression="execution(* *.say(..))"/>-->
+<!--        <aop:advisor advice-ref="beforeAdvice" pointcut-ref="point"/>-->
+<!--        <aop:advisor advice-ref="afterAdvice" pointcut-ref="point"/>-->
+<!--    </aop:config>-->
+<!--    <bean id="afterAdvice" class="com.pcy.service.impl.AfterAdviceImpl"/>-->
+<!--    <bean id="beforeAdvice" class="com.pcy.service.impl.BeforeAdviceImpl"/>-->
+
+
 </beans>

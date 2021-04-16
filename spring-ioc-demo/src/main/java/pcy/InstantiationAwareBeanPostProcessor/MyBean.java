@@ -1,10 +1,7 @@
 package pcy.InstantiationAwareBeanPostProcessor;
 
 import org.springframework.beans.BeansException;
-import org.springframework.beans.factory.BeanClassLoaderAware;
-import org.springframework.beans.factory.BeanFactory;
-import org.springframework.beans.factory.BeanFactoryAware;
-import org.springframework.beans.factory.BeanNameAware;
+import org.springframework.beans.factory.*;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 import org.springframework.context.EmbeddedValueResolverAware;
@@ -17,22 +14,13 @@ import org.springframework.util.StringValueResolver;
  * @author: 彭椿悦
  * @data: 2021/3/19 10:30
  */
-public class A implements BeanNameAware, BeanClassLoaderAware, BeanFactoryAware, EnvironmentAware,
-        EmbeddedValueResolverAware, ApplicationContextAware {
-	public A() {
-		System.out.println("A被实例化");
-	}
+public class MyBean implements BeanNameAware, BeanClassLoaderAware, BeanFactoryAware, EnvironmentAware,
+        EmbeddedValueResolverAware, ApplicationContextAware, InitializingBean, DisposableBean {
+    public MyBean() {
+        System.out.println("实例化bean对象");
+    }
 
-//	private com.com.pcy.InstantiationAwareBeanPostProcessor.B b;
     private String name;
-
-//    public com.com.pcy.InstantiationAwareBeanPostProcessor.B getB() {
-//        return b;
-//    }
-//
-//    public void setB(com.com.pcy.InstantiationAwareBeanPostProcessor.B b) {
-//        this.b = b;
-//    }
 
     @Override
     public void setBeanName(String name) {
@@ -64,15 +52,31 @@ public class A implements BeanNameAware, BeanClassLoaderAware, BeanFactoryAware,
         System.out.println("执行了EnvironmentAware接口");
     }
 
-	public void setName(String name) {
-		System.out.println("设置"+name);
-    	this.name = name;
+    public void setName(String name) {
+        System.out.println("设置对象属性");
+        this.name = name;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void initMethod() {
+        System.out.println("执行自定义init-method方法");
+    }
+
+
+    private void destroyMethod() {
+		System.out.println("执行destroy方法");
+    }
+
+	@Override
+	public void afterPropertiesSet() throws Exception {
+		System.out.println("调用了afterPropertiesSet");
 	}
 
-	public String getName() {
-		return name;
-	}
-	public void initMethod(){
-		System.out.println("初始化");
-	}
+    @Override
+    public void destroy() throws Exception {
+        System.out.println("Disposable.destroy");
+    }
 }

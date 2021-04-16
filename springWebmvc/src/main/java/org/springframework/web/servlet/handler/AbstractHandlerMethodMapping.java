@@ -372,11 +372,11 @@ public abstract class AbstractHandlerMethodMapping<T> extends AbstractHandlerMap
 	 */
 	@Override
 	protected HandlerMethod getHandlerInternal(HttpServletRequest request) throws Exception {
-		/*xxx: 根据获取路径*/
+		//获取Uri
 		String lookupPath = initLookupPath(request);
 		this.mappingRegistry.acquireReadLock();
 		try {
-			/*xxx: 通过路径和请求 找到HandlerMethod*/
+			/*xxx: 通过路径和请求 找到HandlerMethod（也就是Controller中的方法）*/
 			HandlerMethod handlerMethod = lookupHandlerMethod(lookupPath, request);
 			/*xxx: 如果找到了Handler，则使用  createWithResolvedBean 创建新的 HandlerMethod并返回*/
 			return (handlerMethod != null ? handlerMethod.createWithResolvedBean() : null);
@@ -398,7 +398,7 @@ public abstract class AbstractHandlerMethodMapping<T> extends AbstractHandlerMap
 	@Nullable
 	protected HandlerMethod lookupHandlerMethod(String lookupPath, HttpServletRequest request) throws Exception {
 		List<Match> matches = new ArrayList<>();
-		/*xxx: 首先根据 loopuPath 获取到匹配条件*/
+		/*xxx: 首先根据 lookupPath 获取到匹配条件*/
 		List<T> directPathMatches = this.mappingRegistry.getMappingsByDirectPath(lookupPath);
 		if (directPathMatches != null) {
 			/*xxx: 将找到的匹配条件 添加到 matches */

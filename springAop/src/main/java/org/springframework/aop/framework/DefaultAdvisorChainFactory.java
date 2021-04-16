@@ -55,17 +55,18 @@ public class DefaultAdvisorChainFactory implements AdvisorChainFactory, Serializ
 
 		// This is somewhat tricky... We have to process introductions first,
 		// but we need to preserve order in the ultimate list.
-		//getInstance()返回的是DefaultAdvisorAdapterRegistry类型的对象
+		//获取Advisor的适配器，getInstance()返回的是DefaultAdvisorAdapterRegistry类型的对象
 		AdvisorAdapterRegistry registry = GlobalAdvisorAdapterRegistry.getInstance();
 
-		//获取该代理类的所有Advisor
+		//在代理类生成时已经将该bean能应用的Advisor初始化好了所以这里直接获取该代理类的所有Advisor
 		Advisor[] advisors = config.getAdvisors();
 		List<Object> interceptorList = new ArrayList<>(advisors.length);
+		//获取此方法定义的类
 		Class<?> actualClass = (targetClass != null ? targetClass : method.getDeclaringClass());
 		Boolean hasIntroductions = null;
 
 		for (Advisor advisor : advisors) {
-			/*xxx:切点通知器*/
+			//切点通知器
 			if (advisor instanceof PointcutAdvisor) {
 				// Add it conditionally.
 				PointcutAdvisor pointcutAdvisor = (PointcutAdvisor) advisor;
@@ -81,7 +82,7 @@ public class DefaultAdvisorChainFactory implements AdvisorChainFactory, Serializ
 					else {
 						match = mm.matches(method, actualClass);
 					}
-					/*xxx:当切点匹配时，再根据切点的配置情况，加入拦截器列表*/
+					//当切点匹配时，再根据切点的配置情况，加入拦截器列表
 					if (match) {
 						MethodInterceptor[] interceptors = registry.getInterceptors(advisor);
 						if (mm.isRuntime()) {
@@ -97,7 +98,7 @@ public class DefaultAdvisorChainFactory implements AdvisorChainFactory, Serializ
 					}
 				}
 			}
-			/*xxx:拦截器通知器*/
+			//拦截器通知器
 			else if (advisor instanceof IntroductionAdvisor) {
 				IntroductionAdvisor ia = (IntroductionAdvisor) advisor;
 				if (config.isPreFiltered() || ia.getClassFilter().matches(actualClass)) {
